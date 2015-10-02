@@ -125,7 +125,7 @@ and
 P^r = \frac{1}{\sum^{S_0}_i N^{D_{r,i}}+1}
  \end{split}
 \end{equation}
-From Eqs 13-14 we can see that, when resource is not constrained to be fully consumed, there is always some portion of the total resource that is not consumed by any species ($P^r$ is always bigger than 0). More specifically, the more individuals there are and the higher $D_r$ of all species, the lower the proportion of the redundant resource. This makes intuitive sense: when the community is comparatively empty and homogeneous, the resource use efficiency is low; when the community gets more saturated and diverse, the resource can be more thoroughly exploited. When $\sum^{S_0}_i N^{D_{r,i}} >> 1$, there is practically no redundant resource ($P^r -- > 0$), suggesting that nearly all resources are allocated to individuals.
+From Eqs. 13-14 we can see that, when resource is not constrained to be fully consumed, there is always some portion of the total resource that is not consumed by any species ($P^r$ is always bigger than 0). More specifically, the more individuals there are and the higher $D_r$ of all species, the lower the proportion of the redundant resource. This makes intuitive sense: when the community is comparatively empty and homogeneous, the resource use efficiency is low; when the community gets more saturated and diverse, the resource can be more thoroughly exploited. When $\sum^{S_0}_i N^{D_{r,i}} >> 1$, there is practically no redundant resource ($P^r \to 0$), suggesting that nearly all resources are allocated to individuals.
 
 \section{From resource distribution to growth function}
 To get to growth function, we have to re-introduce the per capita resource requirement $\theta$ as follows: at any time, the number of individuals maintained by the species is the resource it acquired in the last allocation period divided by its per capita resource requirement, or $N_{i,t+1} = R_{i,t} / \theta_i$. Notice that this is a more relaxed definition than the previous one assuming $\theta$ units for survival and 2$\theta$ for reproduction. Basically this new definition does not assume any particular demographic process to be associated with resource acquisition (e.g. birth or death) but simply states that the amount of resource is proportional to the number of individuals present in the population by a species specific coefficient that is relatively stable through time. In other words, we are only interested in the net growth of the population, e.g. plus 1, and don't care whether it is due to 1 death and 2 births or 99 deaths and 100 births. Please refer to the June 8 write-up for more discussions.
@@ -144,17 +144,122 @@ Substituting Eq. 13 into 15 we get
  => g_{i,t} =  \frac{R_0 N_{i,t}^{D_{r,i}-1}}{\theta_i(\sum^{S_0}_i N_{i,t}^{D_{r,i}}+1)} -1
  \end{split}
 \end{equation}
+\subsection{Steady state}
 It is easy to prove that the steady state abundance is the same expression as with resource constraint (by setting $g_i=0$ for all $i$):
  \begin{equation}
  \begin{split}
-SSN_i = (C\theta_i) ^{\frac{1}{D_{r,i}-1}}
+N_i \mbox{(steady state)} = (C\theta_i) ^{\frac{1}{D_{r,i}-1}}
  \end{split}
 \end{equation}
-Just that with the resource constraint, the constant $C$ is bigger and $SSN_i$s are smaller for all species. 
+For the steady state resource, substituting Eq. 17 into Eq. 13 we get:
+ \begin{equation}
+ \begin{split}
+P_i  \mbox{(steady state)} =   \frac{(C\theta_i) ^{\frac{D_{r,i}}{D_{r,i}-1}}}{\sum^{S_0}_i (C\theta_i) ^{\frac{D_{r,i}}{D_{r,i}-1}}+1}
+ \end{split}
+\end{equation}
+For the redundant resource, 
+ \begin{equation}
+ \begin{split}
+P^r  \mbox{(steady state)} = \frac{1}{\sum^{S_0}_i (C\theta_i) ^{\frac{D_{r,i}}{D_{r,i}-1}}+1}
+ \end{split}
+\end{equation}
 
-plot out growth function result for $g$ no bigger than $r_i$.
+$C$ can be determined by the equivalence equation:
+ \begin{equation}
+ \begin{split}
+\sum^{S_0}_i R_i = \sum^{S_0}_i N_i \times \theta_i = \sum^{S_0}_iC^{\frac{1}{D_{r,i}-1}} \theta_i^{\frac{D_{r,i}}{D_{r,i}-1}} \\
+= \sum^{S_0}_i R_0 P_i = \frac{R_0 \sum^{S_0}_i (C\theta_i) ^{\frac{D_{r,i}}{D_{r,i}-1}}}{\sum^{S_0}_i (C\theta_i) ^{\frac{D_{r,i}}{D_{r,i}-1}}+1}
+ \end{split}
+\end{equation}
+From Eqs. 18-20 we can see that the proportion of resource consumed by species at steady state is determined by both the species attributes ($\theta$ and $D_r$) and the constant $C$, which is related to the total resource available $R_0$. In the next section I will look at some special cases to further reveal the implications of these equations.
 
-\subsection{Special case: when there is only one species}
-Previously when there is resource constraint, the one-species case of MERA is very uninteresting: the species simply has to consume all resource and stays at that state forever. However, under the unconstrained framework, the one-species scenario is much more complicated. Particularly, if this species has 
+
+\section{Special case: When there is only one species}
+Previously when there is resource constraint, the one-species case of MERA is very uninteresting: the species simply has to consume all resource and stays at that state forever. However, under the unconstrained framework, the one-species scenario is much more complicated. From Eqs. 13, 14 and16 we can get the equations for one species:
+
+ \begin{equation}
+ \begin{split}
+P_1 =  \frac{N_1^{D_{r,1}}}{N_1^{D_{r,1}}+1}
+ \end{split}
+\end{equation}
+ \begin{equation}
+ \begin{split}
+P^r = \frac{1}{N_1^{D_{r,1}}+1}
+ \end{split}
+\end{equation}
+ \begin{equation}
+ \begin{split}
+g_1 =  \frac{R_0 N_1^{D_{r,1}-1}}{\theta(N_1^{D_{r,1}}+1)} -1
+ \end{split}
+\end{equation}
+Next let's look at some more specific cases. First if $D_{r,1} = 0$ the equations reduce to:
+ \begin{equation}
+ \begin{split}
+P_1 =  P^r = 0.5
+ \end{split}
+\end{equation}
+ \begin{equation}
+ \begin{split}
+g_1 =  \frac{R_0 }{2\theta_1 N_1} -1
+ \end{split}
+\end{equation}
+Therefore when there is only one species, and the species has $D_r = 0$, it always gets half of the total resource regardless of its abundance, i.e. from any initial state through to the steady state. At the other extreme when $D_{r,1} = 1$:
+ \begin{equation}
+ \begin{split}
+P_1 =  \frac{N_1}{N_1+1}
+ \end{split}
+\end{equation}
+ \begin{equation}
+ \begin{split}
+P^r = \frac{1}{N_1+1}
+ \end{split}
+\end{equation}
+ \begin{equation}
+ \begin{split}
+g_1 =  \frac{R_0 }{\theta_1(N_1+1)} -1
+ \end{split}
+\end{equation}
+In this case the resource consumed by the species increases with the number of individuals it has (the rich gets richer?).  By setting $g_1= 0$ we can solve for resource distribution at steady state to be $P_1 = (R_0 -\theta_1) /R_0$ and $P^r = \theta_1 /R_0$. Therefore when there is only one species with $D_r = 1$, the smaller its resource requirement $\theta$, the more resource it can obtain eventually.
+
+\subsection{A modified model: adding a constraint on resource obtainable}
+From Eq. 23, 25 and 28 we can see that the net growth rate of the species is a negative function of the number of individuals it currently has. This means that when abundance is very low, growth rate can be very high: in the case of $D_r = 0$, when the steady state abundance $\frac{R_0}{2\theta_1} = 100$ and initial abundance $N_{1,t=0} = 1$, the initial growth rate is 99, which means the 1 individual needs to give birth to 99 individuals all at once. For the case $D_r=1$, the population does not jump to its steady state in one step, but the net growth rate when $N$ is low is still potentially high (actually in the former example if $D_r=1$ the net growth rate when $N_{1,t=0} = 1$ is also 99). This clearly contradicts common sense. The reason why this is happening in the current model is that even without the resource constraint, we have assumed all resource to be potentially available to the species. However, we would naturally think that the amount of resource obtainable by the species is limited by its abundance. Particularly, if there are only a few individuals, they can only be efficiently exposed to a limited amount of resource out there; the more individuals there are, the more resource they can potentially acquire. With this as the baseline, I am going to modify the model trying to incorporate a constraint on resource available for the community as a function of its total abundance. For the one species case, I will simply assume that the resource available for the population is proportional to its current abundance until it reaches the total resource in the environment, or 
+ \begin{equation}
+ \begin{split}
+R_{0,t} = \mbox{min} \{r_1 N_{1,t}, R_0\}
+ \end{split}
+\end{equation}
+Given this, the net growth function (suppressing $t$ in the subscript) is:
+ \begin{equation}
+ \begin{split}
+g_1 =  \frac{r_1 N_{1}^{D_{r,1}}}{\theta_1(N_{1}^{D_{r,1}}+1)} -1 \hskip 1cm \mbox{(when $N_1 < \frac{R_0}{r_1}$)}\\
+=\frac{R_0 N_1^{D_{r,1}-1}}{\theta_1(N_1^{D_{r,1}}+1)} -1\hskip 1cm \mbox{(when $N_1 >= \frac{R_0}{r_1}$)}
+ \end{split}
+\end{equation}
+I have used $r$ to denote the amount of resource an individual can contribute to the total resource availability for the community (only one species in this case). You can probably see some connections between this parameter and the classic definition of intrinsic growth rate (usually with the same annotation): they both describe how much net growth the population can reach when abundance is far from reaching its steady state level (carrying capacity). But you can also see that they are not exactly the same: while intrinsic growth rate directly specifies the maximal net growth rate of the population (the $g$ here), the $r$ parameter only specifies how much resource the population can get; the actual net growth rate is still derived from the MERA procedure. Their relationship is described by Eq. 30.
+
+Now let's again look at the case $D_r=0$. Eq. 30 reduces to :
+ \begin{equation}
+ \begin{split}
+g_1 =  \frac{r_1 }{2\theta_1} -1 \hskip 1cm \mbox{(when $N_1 < \frac{R_0}{r_1}$)}\\
+=\frac{R_0 }{2\theta_1N_1} -1\hskip 1cm \mbox{(when $N_1 >= \frac{R_0}{r_1}$)}
+ \end{split}
+\end{equation}
+To see what exactly it looks like, $g$ is plotted against $N$ and different $r$ values are compared:
+
+Discuss the exponential growth when $D_r=0$. Steeper than exponential growth when $D_r>0$.
+
+Net growth does not slow down until near steady state. (Optimal fishing level is higher than half). Maybe solve analytically for the optimal fishing level.
+
+The abruptness of the growth turn. Shall we try to smooth it by modifying Eq. 29 (to be a smooth function of $N$)?
+
+How about more complicated reliance of resource obtainable on $N$ (e.g. $R_{0,t} = r N_t^2$)
+ 
+ A key problem is the unknown reliance of resource obtainable on $N$.
+
+The possibility that more species add to smoothness.
+
+
+
+
 
 \end{document}
