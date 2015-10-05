@@ -7,20 +7,8 @@ single_growth <- function(r,R0,N,Dr,theta){
 	}
 }
 
-single_growth <- function(r,R0,N,Dr,theta){
-	if(N<(R0/r)^2){
-		r*N^(Dr-0.5)/theta/(N^Dr+1)-1
-	}else{
-		R0*N^(Dr-1)/theta/(N^Dr+1)-1
-	}
-}
-
-single_growth <- function(r,R0,N,Dr,theta){
-	if(N<sqrt(R0/r)){
-		r*N^(Dr+1)/theta/(N^Dr+1)-1
-	}else{
-		R0*N^(Dr-1)/theta/(N^Dr+1)-1
-	}
+single_growth <- function(r,R0,N,Dr,theta){##the stock version
+	r*(R0-theta*N)*(r*N)^(Dr-1)/(theta*((r*N)^Dr+1))
 }
 
 SSN_eq <- function(init,R0,Dr,theta){
@@ -46,6 +34,21 @@ plot_growth <- function(SSN,r,R0,Dr,theta,ng=1,comp=T){
 	}
 	if(comp){
 		logi_g <- (r/2/theta-1)*(1-N_seq/SSN)
+		points(N_seq,logi_g,pch=16)
+	}
+}
+
+plot_growth <- function(r,R0,Dr,theta,ng=1,comp=T){
+	SSN <- R0/theta
+	N_seq <- seq(1,R0,length=50)
+	g_seq <- unlist(lapply(N_seq,single_growth,r=r,R0=R0,Dr=Dr,theta=theta))
+	if(ng==1){
+		plot(g_seq~N_seq,xlab="abundance N",ylab="net growth rate g",col=2,pch=16)
+	}else{
+		points(N_seq,g_seq,pch=16,col=ng+1)
+	}
+	if(comp){
+		logi_g <- r*(1-N_seq/SSN)
 		points(N_seq,logi_g,pch=16)
 	}
 }

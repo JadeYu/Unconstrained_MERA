@@ -39,6 +39,11 @@
 \raggedright
 \large
 \setlength{\parindent}{15pt}
+Add extra constraint on $P_i$ ($ P_i \leq \frac{r_i N_i}{R_0}$)
+
+Change the $R_0$ regime to a stock instead of flow. Re-scrambling only happens for the new-borns (net growth population).
+
+
 Previously MERA describes a zero-sum scenario where there is a resource constraint that has to be satisfied at all times (the sum of resource use over all species equals a constant $R_0$, i.e. the amount of resource available from the environment). This framework is useful in describing the steady state but does not help reveal the dynamics when the community is far from being saturated, e.g. dynamics the exponential growth function describes. Here I try to solve the MERA maximization equations without the resource constraint, corresponding to a non-zero-sum scenario, where the total resource use of the community does not stay at one level but can potentially grow from near-zero to a steady state where the resource utilized does not change through time (this value depends on the number of species and species attributes). 
 
 Equations in this write-up are based on the generalized MERA. Please refer to the June 8 write-up for the original derivations. 
@@ -251,12 +256,25 @@ Discuss the exponential growth when $D_r=0$. Steeper than exponential growth whe
 Net growth does not slow down until near steady state. (Optimal fishing level is higher than half). Maybe solve analytically for the optimal fishing level.
 
 The abruptness of the growth turn. Shall we try to smooth it by modifying Eq. 29 (to be a smooth function of $N$)?
-
-How about more complicated reliance of resource obtainable on $N$ (e.g. $R_{0,t} = r N_t^2$)
  
  A key problem is the unknown reliance of resource obtainable on $N$.
 
 The possibility that more species add to smoothness.
+
+\section{A second modified model: treating resource as stock}
+For the new-borns ($rN$, $r$ is the intrinsic growth rate), make them scramble for the resource that are left open ($R_0 - \theta N$).
+Therefore the new expression for $g$ is:
+
+ \begin{equation}
+ \begin{split}
+g_1 = \frac{r_1 (R_0-\theta_1N_1)(r_1 N_1)^{D_{r,1}-1}}{\theta_1[(r_1 N_1)^{D_{r,1}}+1]} 
+ \end{split}
+\end{equation}
+Notice that you don't have to minus 1 here because we are only calculating resource allocation for the new-borns (all existing individuals will hold on to their resources). Death is implicit. In the existing individuals, there could be some replaced by new-borns. Not all new-borns scramble for extra resource.
+
+Try to reveal the relationship between $r$ and the intrinsic growth rate in logistic growth.
+
+Change to piece-wise dependence: $R_scramble = \theta r N$ when $N < (R_0-\theta N)/(\theta r)$, $R_scramble = R_0 - \theta N$ when $N \geq (R_0-\theta N)/(\theta r)$, 
 
 
 
