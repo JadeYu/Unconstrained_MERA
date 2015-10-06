@@ -1,15 +1,19 @@
 library(nleqslv)
 single_growth <- function(r,R0,N,Dr,theta){
 	if(N<R0/r){
-		r*N^Dr/theta/(N^Dr+1)-1
+		g <- r*N^Dr/theta/(N^Dr+1)-1
 	}else{
-		R0*N^(Dr-1)/theta/(N^Dr+1)-1
+		g <- R0*N^(Dr-1)/theta/(N^Dr+1)-1
 	}
 }
 
+
+
 single_growth <- function(r,R0,N,Dr,theta){##the stock version
-	r*(R0-theta*N)*(r*N)^(Dr-1)/(theta*((r*N)^Dr+1))
+	g <- r*(r*theta*N)(R0-theta*N)/(r*theta*N+R0-theta*N)*(r*N)^(Dr-1)/(theta*((r*N)^Dr+1))
 }
+
+##use one species scenario to solve for the resource not satisfied.
 
 SSN_eq <- function(init,R0,Dr,theta){
 	R0*init^(Dr-1)-theta*(init^Dr+1)
@@ -38,7 +42,7 @@ plot_growth <- function(SSN,r,R0,Dr,theta,ng=1,comp=T){
 	}
 }
 
-plot_growth <- function(r,R0,Dr,theta,ng=1,comp=T){
+plot_growth <- function(SSN,r,R0,Dr,theta,ng=1,comp=T){
 	SSN <- R0/theta
 	N_seq <- seq(1,R0,length=50)
 	g_seq <- unlist(lapply(N_seq,single_growth,r=r,R0=R0,Dr=Dr,theta=theta))
