@@ -76,11 +76,14 @@ Take the derivative over $R$ and set it to zero:
 \end{equation}
 Eq. 4 gives the most likely $R$ (that maximizes the number of microstates) for any $X$ and $Y$. We can see that it is smaller than both $X$ and $Y$; when $X$ is much bigger than $Y$, it is close to $Y$; when $Y$ is much bigger than $X$, it is close to $X$.
 
-Now let's go back to our problem: what are the variables corresponding to $X$ and $Y$ in our scenario? There might be other interpretations but to me here is the most straightforward one: $X$ is the maximal resource the community could utilize given its current abundance, while $Y$ is the total resource available in the environment. Actually $X$ and $Y$ are symmetrical in Eq. 4 so it does not really matter if you switch their interpretations. The more important thing is to keep in mind that one of them represents  the potential of the community (the boxes) while the other represents the size of the resource pool (the balls). For the former a first intuitive assumption can be made assuming the maximal resource utilized by the community corresponds to its maximal growth potential:
+Now let's go back to our problem: what are the variables corresponding to $X$ and $Y$ in our scenario? There might be other interpretations but to me here is the most straightforward one: $X$ is the maximal resource the community could utilize given its current abundance, while $Y$ is the total resource available in the environment. Actually $X$ and $Y$ are symmetrical in Eq. 4 so it does not really matter if you switch their interpretations. The more important thing is to keep in mind that one of them represents  the potential of the community (the boxes) while the other represents the size of the resource supply (the balls). For the former a first intuitive assumption can be made assuming the maximal resource utilized by the community corresponds to its maximal growth potential:
 
 \section{Two possible versions: complete re-shuffle vs fixation}
+In the last section I have showed the basic logic to dynamically determine the resource constraint for MERA allocation given the potential of the community and the resource supply. The next thing would be to determine the exact expressions of these two terms. There are two alternative ways to do it, the first assume complete reshuffle of resource at each step, or resource obtained in the last step cannot be effectively maintained in the community, while the second 
+
 \subsection{V1: Complete re-shuffle}
 More flow type. No preemption.
+
 \subsection{V2: Fixation}
 More stock type. With preemption.
  
