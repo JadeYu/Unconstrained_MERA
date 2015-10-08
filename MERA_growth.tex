@@ -1,0 +1,90 @@
+\documentclass[12pt]{article}
+\usepackage{fullpage}
+\usepackage[margin=1in]{geometry}
+\usepackage[stable]{footmisc}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{IEEEtrantools}
+\usepackage{lineno}
+\usepackage{amsmath}
+\usepackage{epstopdf}
+\usepackage{parskip}
+\usepackage{authblk}
+\usepackage[authoryear]{natbib}
+%\setlength{\parskip}{20pt}
+\linespread{1.6}
+\date{}
+
+\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+
+
+%%	math short-cuts
+\def \ve{\varepsilon}	% epsilon used for metabolic rate
+\def \la{\lambda}	% lambda
+\newcommand{\eref}[1]{(\ref{#1})}
+
+%%	new commands for referencing figures and tables and sections
+\newcommand{\fref}[1]{Figure~\ref{#1}}	% inline figure ref
+\newcommand{\fpref}[1]{Fig.~\ref{#1}}	% parenthetical figure ref
+\newcommand{\tref}[1]{Table~\ref{#1}}	% table ref
+\newcommand{\sref}[1]{Section~\ref{#1}}	% table ref
+%\linenumbers
+
+\title{\Large \textbf{Growth with MERA: a dynamic resource constraint}}
+
+\author{Jade, Oct 14}
+
+\begin{document}
+\maketitle
+\raggedright
+\large
+\setlength{\parindent}{15pt}
+
+One reason why the current MERA framework does not lead to a realistic growth function is that it assumes all resources can be potentially utilized by the individuals currently existing in the community, even if there is only one species and a few individuals (see detailed discussion in the Oct 9: Unconstrained MERA write-up). This contradicts the reality that the amount of resource acquired by the species has to be limited by its abundance, both through the limited ability to utilize resource for each individual (upper bound for metabolism and reproductivity) and the decreased probability for a small number of individuals to get a large amount of resource. Here I am going to address this limit by adding one more step before resource allocation happens among species and individuals, i.e. the community-level resource acquisition step. Given the maximal resource acquisition of the current community (regulated by the abundance) and the total resource available in the environment, this step determines dynamically at each step how much total resource the community can get, i.e. the resource constraint for the MERA allocation model. This is realized by maximizing the number of microstates in matching resource units into resource acquisition activities, based on the same principle used in the original MERA framework. For a simple one species case, this extra step gives a growth function that highly resembles the logistic growth function (same when intrinsic growth rate is 1, more density dependence otherwise).
+
+\section{Community-level resource acquisition}
+
+Our question is, when there is a constant resource available in the environment ($R_0$) and meanwhile the community has an upper limit to the amount of resource it can get, how much resource it can actually get. To address this let's first consider a similar problem: there are $X$ boxes and $Y$ balls; the boxes can each contain at most one ball. If I randomly throw balls into the boxes (and assume that the probability of a given ball to be thrown into any box or out of all boxes follows a uniform distribution), what is the most likely number of boxes that have balls in it? It is easy to see that this number can not be bigger than $X$, since that is the upper limit of number of boxes; it also cannot be bigger than $Y$, since there are $Y$ balls in total. We can also infer that when $Y$ is much bigger than $X$, the most likely number of boxes with balls in it will be close to $X$ (since the chance of any one box not being occupied after a large number of throws is very low), and similarly when $X$ is much bigger than $Y$, this number will be close to $Y$ (since given a large number of boxes, the probability of not being thrown into any of them is very low). But what is the most likely value for any given $X$ and $Y$? In the following I will show that this value can also be determined by maximizing the number of microstates.
+
+Let's define the number of actually occupied boxes to be $R$. For any given $X$ and $Y$, if we take a certain value of $R$ to be the macrostate, the microstate can be defined as a particular way to match balls with boxes. The number of microstates for the macrostate $R$ can be expressed by:
+ 
+  \begin{equation}
+ \begin{split}
+W(R,X,Y) = C(R,X-R|X) \times C(R,Y-R|Y)
+\end{split}
+\end{equation}
+
+$C$ is the combination function:
+\begin{equation}
+C(x_1,x_2,... |X) = \frac{X!}{x_1! x_2! ...}
+\end{equation}
+So the number of microstates is the number of ways to select $R$ balls from $Y$ balls times the number of ways to select $R$ boxes out of $X$ boxes to contain these balls. With Sterling's approximation we can get:
+  \begin{equation}
+ \begin{split}
+\mbox{log} W(R,X,Y) = X \mbox{log} X + Y \mbox{log} Y - 2 R \mbox{log} R \\
+ - (X-R) \mbox{log} (X-R) - (Y-R) \mbox{log} (Y-R)
+\end{split}
+\end{equation}
+Take the derivative over $R$ and set it to zero:
+
+  \begin{equation}
+ \begin{split}
+\frac{\partial \mbox{log} W(R,X,Y)}{\partial R} =  - 2 \mbox{log} R + \mbox{log} (X-R) + \mbox{log} (Y-R) = 0\\
+=> R^2 = (X-R)(Y-R)\\
+=> R = \frac{XY}{X+Y}
+\end{split}
+\end{equation}
+Eq. 4 gives the most likely $R$ (that maximizes the number of microstates) for any $X$ and $Y$. We can see that it is smaller than both $X$ and $Y$; when $X$ is much bigger than $Y$, it is close to $Y$; when $Y$ is much bigger than $X$, it is close to $X$.
+
+Now let's go back to our problem: what are the variables corresponding to $X$ and $Y$ in our scenario? There might be other interpretations but to me here is the most straightforward one: $X$ is the maximal resource the community could utilize given its current abundance, while $Y$ is the total resource available in the environment. Actually $X$ and $Y$ are symmetrical in Eq. 4 so it does not really matter if you switch their interpretations. The more important thing is to keep in mind that one of them represents  the potential of the community (the boxes) while the other represents the size of the resource pool (the balls). For the former a first intuitive assumption can be made assuming the maximal resource utilized by the community corresponds to its maximal growth potential:
+
+\section{Two possible versions: complete re-shuffle vs fixation}
+\subsection{V1: Complete re-shuffle}
+More flow type. No preemption.
+\subsection{V2: Fixation}
+More stock type. With preemption.
+ 
+\section{Discussion: connection with the previous MERA}
+Explain that this step (community-level acquisition) is independent of what happens next (allocation within the community).
+
+\end{document}
