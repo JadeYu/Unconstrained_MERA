@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  8 OCT 2015 13:00
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  16 OCT 2015 14:43
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -278,7 +278,7 @@ Package: natbib 2010/09/13 8.31b (PWD, AO)
 LaTeX Info: Redefining \cite on input line 694.
 \c@NAT@ctr=\count120
 )
-No file MERA_growth.aux.
+(./MERA_growth.aux)
 \openout1 = `MERA_growth.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 37.
@@ -293,6 +293,7 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 37.
 LaTeX Font Info:    ... okay on input line 37.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 37.
 LaTeX Font Info:    ... okay on input line 37.
+
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
@@ -352,26 +353,57 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 47.
 
 (/usr/local/texlive/2014/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) [2] [3]
-[4] [5] (./MERA_growth.aux) ) 
+) [2]
+<XY_demo.pdf, id=13, 626.34pt x 322.20375pt>
+File: XY_demo.pdf Graphic file (type pdf)
+ <use XY_demo.pdf>
+Package pdftex.def Info: XY_demo.pdf used on input line 49.
+(pdftex.def)             Requested size: 281.85587pt x 144.99525pt.
+ [3 <./XY_demo.pdf>] [4] [5] [6] <partial_result.pdf, id=95, 465.59787pt x 337.
+46416pt>
+File: partial_result.pdf Graphic file (type pdf)
+
+<use partial_result.pdf>
+Package pdftex.def Info: partial_result.pdf used on input line 130.
+(pdftex.def)             Requested size: 469.75502pt x 340.47566pt.
+
+Overfull \hbox (15.0pt too wide) in paragraph at lines 130--131
+[][]  
+ []
+
+[7] [8 <./partial_result.pdf>] [9]
+<complete_result.pdf, id=336, 441.93427pt x 301.32916pt>
+File: complete_result.pdf Graphic file (type pdf)
+
+<use complete_result.pdf>
+Package pdftex.def Info: complete_result.pdf used on input line 184.
+(pdftex.def)             Requested size: 469.75502pt x 320.31776pt.
+
+Overfull \hbox (15.0pt too wide) in paragraph at lines 184--185
+[][]  
+ []
+
+[10] [11 <./complete_result.pdf>] [12] [13] (./MERA_growth.aux) ) 
 Here is how much of TeX's memory you used:
- 3934 strings out of 493117
- 55496 string characters out of 6135433
+ 3951 strings out of 493117
+ 55825 string characters out of 6135433
  125876 words of memory out of 5000000
- 7345 multiletter control sequences out of 15000+600000
+ 7357 multiletter control sequences out of 15000+600000
  7749 words of font info for 30 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 42i,16n,32p,1546b,183s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2014/texmf-dist/fonts/type1/pu
-blic/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/pub
-lic/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/publ
-ic/amsfonts/cm/cmr10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public
-/amsfonts/cm/cmr12.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/a
-msfonts/cm/cmsy10.pfb>
-Output written on MERA_growth.pdf (5 pages, 65345 bytes).
+ 42i,18n,32p,1513b,183s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/local/te
+xlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/tex
+live/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texl
+ive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texli
+ve/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive
+/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2
+014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2014
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
+Output written on MERA_growth.pdf (13 pages, 759226 bytes).
 PDF statistics:
- 40 PDF objects out of 1000 (max. 8388607)
- 27 compressed objects within 1 object stream
+ 588 PDF objects out of 1000 (max. 8388607)
+ 424 compressed objects within 5 object streams
  0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 16 words of extra memory for PDF output out of 10000 (max. 10000000)
 
