@@ -276,7 +276,15 @@ Try to reveal the relationship between $r$ and the intrinsic growth rate in logi
 
 Change to piece-wise dependence: $R_scramble = \theta r N$ when $N < (R_0-\theta N)/(\theta r)$, $R_scramble = R_0 - \theta N$ when $N \geq (R_0-\theta N)/(\theta r)$, 
 
+Key question: how many total resources the community gets.
+max resource r*theta*N (total observations that happened); limit is R0-theta*N (actual resource amount out there); how many of these observations (or feeding activities; potentially by one individual or multiple individuals) actually acquire resource.
 
+Not consider the difference between feeding activities of different species. Between and within species allocation will be happen after the total resource is determined.
+
+From this a smooth function of the actual total resource for allocation can be obtained.
+Then given the resource, do allocation as MERA does.
+
+One step before the demographic grouping and allocation: resource division (observed and not observed).
 
 
 
