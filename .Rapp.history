@@ -1,345 +1,3 @@
-growth_1sp(10,r=0.01,theta_seq=1,Dr_seq=0.6,R=100,nstep=30)
-growth_1sp(10,r=0.001,theta_seq=1,Dr_seq=0.6,R=100,nstep=30)
-growth_1sp(10,r=0.01,theta_seq=1,Dr_seq=0.6,R=100,nstep=30)
-growth_1sp <- function(init.Ns,r,theta_seq,Dr_seq,R,nstep){#
-	SSN <- get_SSN(theta_seq,Dr_seq,R)#
-	N_seq <- init.Ns#
-	N_mat <- matrix(nrow=nstep,ncol=length(init.Ns))#
-	for(t in 1:nstep){#
-		N_mat[t,] <- N_seq#
-		potentials <- r*N_seq^0.5#
-		G <- MERA_growth(N_seq,theta_seq,Dr_seq,R)#
-		for(i in 1:length(init.Ns)){#
-			N_seq[i] <- N_seq[i]+ min(potentials[i],G[i])#
-		}#
-	}#
-	plot(N_mat[,1],xlab="time",ylab="abundance",ylim=range(N_mat))#
-	if(length(init.Ns)>1){#
-		for(i in 2:length(init.Ns)){#
-		points(N_mat[,i],col=i)#
-		}	#
-	}#
-	N_mat#
-}
-growth_1sp(10,r=0.01,theta_seq=1,Dr_seq=0.6,R=100,nstep=30)
-growth_1sp(10,r=0.1,theta_seq=1,Dr_seq=0.6,R=100,nstep=30)
-growth_1sp(10,r=1,theta_seq=1,Dr_seq=0.6,R=100,nstep=30)
-growth_1sp(10,r=2,theta_seq=1,Dr_seq=0.6,R=100,nstep=30)
-growth_1sp <- function(init.Ns,r,theta_seq,Dr_seq,R,nstep){#
-	SSN <- get_SSN(theta_seq,Dr_seq,R)#
-	N_seq <- init.Ns#
-	N_mat <- matrix(nrow=nstep,ncol=length(init.Ns))#
-	for(t in 1:nstep){#
-		N_mat[t,] <- N_seq#
-		potentials <- r*N_seq#
-		G <- MERA_growth(N_seq,theta_seq,Dr_seq,R)#
-		for(i in 1:length(init.Ns)){#
-			N_seq[i] <- N_seq[i]+ min(potentials[i],G[i])#
-		}#
-	}#
-	plot(N_mat[,1],xlab="time",ylab="abundance",ylim=range(N_mat))#
-	if(length(init.Ns)>1){#
-		for(i in 2:length(init.Ns)){#
-		points(N_mat[,i],col=i)#
-		}	#
-	}#
-	N_mat#
-}
-growth_1sp <- function(init.Ns,r=2,theta_seq,Dr_seq,R,nstep){#
-	SSN <- get_SSN(theta_seq,Dr_seq,R)#
-	N_seq <- init.Ns#
-	N_mat <- matrix(nrow=nstep,ncol=length(init.Ns))#
-	for(t in 1:nstep){#
-		N_mat[t,] <- N_seq#
-		R_avail <- min(r*sum(theta_seq*N_seq)^2,R)## total resource available grows linearly to the total resource already obtained#
-		G <- MERA_growth(N_seq,theta_seq,Dr_seq,R_avail)#
-		N_seq <- N_seq+ G#
-	}#
-	plot(N_mat[,1],xlab="time",ylab="abundance",ylim=range(N_mat))#
-	if(length(init.Ns)>1){#
-		for(i in 2:length(init.Ns)){#
-		points(N_mat[,i],col=i)#
-		}	#
-	}#
-	N_mat#
-}
-growth_1sp(10,r=2,theta_seq=1,Dr_seq=0.6,R=100,nstep=30)
-growth_1sp(10,r=0.1,theta_seq=1,Dr_seq=0.6,R=100,nstep=30)
-growth_1sp(10,r=0.5,theta_seq=1,Dr_seq=0.6,R=100,nstep=30)
-growth_1sp <- function(init.Ns,r=2,theta_seq,Dr_seq,R,nstep){#
-	SSN <- get_SSN(theta_seq,Dr_seq,R)#
-	N_seq <- init.Ns#
-	N_mat <- matrix(nrow=nstep,ncol=length(init.Ns))#
-	for(t in 1:nstep){#
-		N_mat[t,] <- N_seq#
-		R_avail <- min(r*sum(N_seq)^2,R)## total resource available grows linearly to the total resource already obtained#
-		G <- MERA_growth(N_seq,theta_seq,Dr_seq,R_avail)#
-		N_seq <- N_seq+ G#
-	}#
-	plot(N_mat[,1],xlab="time",ylab="abundance",ylim=range(N_mat))#
-	if(length(init.Ns)>1){#
-		for(i in 2:length(init.Ns)){#
-		points(N_mat[,i],col=i)#
-		}	#
-	}#
-	N_mat#
-}
-growth_1sp(10,r=0.5,theta_seq=1,Dr_seq=0.6,R=100,nstep=30)
-growth_1sp <- function(init.Ns,r=2,theta_seq,Dr_seq,R,nstep){#
-	SSN <- get_SSN(theta_seq,Dr_seq,R)#
-	N_seq <- init.Ns#
-	N_mat <- matrix(nrow=nstep,ncol=length(init.Ns))#
-	for(t in 1:nstep){#
-		N_mat[t,] <- N_seq#
-		R_avail <- min(r*sum(N_seq)^2,R)## total resource available grows linearly to the total resource already obtained#
-		G <- MERA_growth(N_seq,theta_seq,Dr_seq,R_avail)#
-		N_seq <- N_seq+ G#
-	}#
-	plot(N_mat[,1],xlab="time",ylab="abundance",ylim=range(N_mat))#
-	if(length(init.Ns)>1){#
-		for(i in 2:length(init.Ns)){#
-		points(N_mat[,i],col=i)#
-		}	#
-	}#
-	N_mat#
-}
-growth_1sp(10,r=0.5,theta_seq=1,Dr_seq=0.6,R=100,nstep=30)
-growth_1sp(10,r=0.1,theta_seq=1,Dr_seq=0.6,R=100,nstep=30)
-growth_1sp(10,r=1,theta_seq=1,Dr_seq=0.6,R=100,nstep=30)
-growth_1sp(10,r=0.6,theta_seq=1,Dr_seq=0.6,R=100,nstep=30)
-growth_1sp <- function(init.Ns,r,theta_seq,Dr_seq,R,nstep){#
-	SSN <- get_SSN(theta_seq,Dr_seq,R)#
-	N_seq <- init.Ns#
-	N_mat <- matrix(nrow=nstep,ncol=length(init.Ns))#
-	for(t in 1:nstep){#
-		N_mat[t,] <- N_seq#
-		potentials <- r*N_seq#
-		G <- MERA_growth(N_seq,theta_seq,Dr_seq,R)#
-		for(i in 1:length(init.Ns)){#
-			N_seq[i] <- N_seq[i]+ min(potentials[i],G[i])#
-		}#
-	}#
-	plot(N_mat[,1],xlab="time",ylab="abundance",ylim=range(N_mat))#
-	if(length(init.Ns)>1){#
-		for(i in 2:length(init.Ns)){#
-		points(N_mat[,i],col=i)#
-		}	#
-	}#
-	N_mat#
-}
-growth_1sp(10,r=0.5,theta_seq=1,Dr_seq=0.6,R=100,nstep=30)
-growth_1sp(10,r=0.2,theta_seq=1,Dr_seq=0.6,R=100,nstep=30)
-growth_1sp(10,r=0.1,theta_seq=1,Dr_seq=0.6,R=100,nstep=30)
-growth_1sp(10,r=0.1,theta_seq=1,Dr_seq=1,R=100,nstep=30)
-growth_1sp(10,r=0.1,theta_seq=1,Dr_seq=0,R=100,nstep=30)
-growth_1sp(init.Ns=c(1,1,1),r=1.5,theta_seq,Dr_seq,R=100,nstep=50)
-Dr_seq <- c(0.1,0.1,0.5)
-growth_1sp(init.Ns=c(1,1,1),r=1.5,theta_seq,Dr_seq,R=100,nstep=50)
-growth_1sp(init.Ns=c(5,1,10),r=1.5,theta_seq,Dr_seq,R=100,nstep=50)
-SSN <- get_SSN(theta_seq,Dr_seq,R)
-SSN
-growth_1sp(10,r=0.01,theta_seq=1,Dr_seq=0.3,R=100,nstep=30)
-growth_1sp(10,r=0.1,theta_seq=1,Dr_seq=0.3,R=100,nstep=30)
-growth_1sp(10,r=0.05,theta_seq=1,Dr_seq=0.3,R=100,nstep=30)
-growth_1sp
-growth_1sp <- function(init.Ns,r=2,theta_seq,Dr_seq,R,nstep){#
-	SSN <- get_SSN(theta_seq,Dr_seq,R)#
-	N_seq <- init.Ns#
-	N_mat <- matrix(nrow=nstep,ncol=length(init.Ns))#
-	for(t in 1:nstep){#
-		N_mat[t,] <- N_seq#
-		R_avail <- min(r*sum(N_seq)^2,R)## total resource available grows linearly to the total resource already obtained#
-		G <- MERA_growth(N_seq,theta_seq,Dr_seq,R_avail)#
-		N_seq <- N_seq+ G#
-	}#
-	plot(N_mat[,1],xlab="time",ylab="abundance",ylim=range(N_mat))#
-	if(length(init.Ns)>1){#
-		for(i in 2:length(init.Ns)){#
-		points(N_mat[,i],col=i)#
-		}	#
-	}#
-	N_mat#
-}
-growth_1sp(10,r=0.05,theta_seq=1,Dr_seq=0.3,R=100,nstep=30)
-growth_1sp(10,r=1,theta_seq=1,Dr_seq=0.3,R=100,nstep=30)
-growth_1sp(10,r=0.5,theta_seq=1,Dr_seq=0.3,R=100,nstep=30)
-growth_1sp(10,r=0.3,theta_seq=1,Dr_seq=0.3,R=100,nstep=30)
-growth_1sp(10,r=0.2,theta_seq=1,Dr_seq=0.3,R=100,nstep=30)
-growth_1sp(10,r=0.1,theta_seq=1,Dr_seq=0.3,R=100,nstep=30)
-growth_1sp(10,r=0.15,theta_seq=1,Dr_seq=0.3,R=100,nstep=30)
-growth_1sp(10,r=0.2,theta_seq=1,Dr_seq=0.3,R=100,nstep=30)
-growth_1sp(10,r=0.15,theta_seq=1,Dr_seq=0.3,R=100,nstep=30)
-growth_1sp(20,r=0.15,theta_seq=1,Dr_seq=0.3,R=100,nstep=30)
-growth_1sp(15,r=0.15,theta_seq=1,Dr_seq=0.3,R=100,nstep=30)
-growth_1sp(13,r=0.15,theta_seq=1,Dr_seq=0.3,R=100,nstep=30)
-growth_1sp(12,r=0.15,theta_seq=1,Dr_seq=0.3,R=100,nstep=30)
-growth_1sp(11,r=0.15,theta_seq=1,Dr_seq=0.3,R=100,nstep=30)
-growth_1sp(10,r=0.15,theta_seq=1,Dr_seq=0.3,R=100,nstep=30)
-growth_1sp(11,r=0.15,theta_seq=1,Dr_seq=0.3,R=100,nstep=30)
-growth_1sp(10,r=0.15,theta_seq=1,Dr_seq=0.3,R=100,nstep=30)
-growth_1sp(9,r=0.15,theta_seq=1,Dr_seq=0.3,R=100,nstep=30)
-growth_1sp(10,r=0.15,theta_seq=1,Dr_seq=0.3,R=100,nstep=30)
-growth_1sp(11,r=0.15,theta_seq=1,Dr_seq=0.3,R=100,nstep=30)
-growth_1sp(12,r=0.15,theta_seq=1,Dr_seq=0.3,R=100,nstep=30)
-solve.sameDr <- function(theta_seq,Dr,R){#
-	base <- sum(theta_seq^(Dr/(Dr-1)))#
-	R* theta_seq^(1/(Dr-1))/base#
-}
-source("MERA_SSN.R")
-## MERA competition model#
-library(nleqslv)#
-#
-solve.sameDr <- function(theta_seq,Dr,R){#
-	base <- sum(theta_seq^(Dr/(Dr-1)))#
-	R* theta_seq^(1/(Dr-1))/base#
-}#
-#
-solve.analytical <- function(theta_seq,Dr_seq,R,r){##given r solve for N+g; r=1 is the special case for equilibrium where N+g=Ne#
-	if(length(theta_seq)==1){#
-		sol <- R/theta_seq[1]#
-	}#
-	r_seq <- c(r,rep(1,length(theta_seq)-length(r)))#
-	C <- get.C(theta_seq,Dr_seq,R,r_seq)#
-	sol <- analytical.sol(C,theta_seq,Dr_seq,r_seq)#
-	sol#
-}#
-#
-analytical.sol <- function(C,theta_seq,Dr_seq,r_seq){#
-	2/exp(1)*(C*theta_seq*r_seq^(0.5/theta_seq))^(1/(Dr_seq-1))#
-}#
-#
-get.C <- function(theta_seq,Dr_seq,R,r_seq){#
-	init.C <- 1/mean(theta_seq)#
-	C <- nleqslv(init.C,R_constraint,theta_seq=theta_seq,Dr_seq=Dr_seq,R=R,r_seq=r_seq)#
-	if(C[[3]]!=1&&C[[3]]!=2){#
-		print(C[[4]])#
-	}#
-	C[[1]]#
-}#
-#
-R_constraint <- function(C,theta_seq,Dr_seq,R,r_seq){#
-	R-sum(theta_seq*analytical.sol(C,theta_seq,Dr_seq,r_seq))#
-}#
-#
-steady.state.mR <- function(Sp_mat,R_mat,combine=T){#
-	SSN_mat <- matrix(ncol=dim(R_mat)[1],nrow=dim(Sp_mat)[1])#
-	for(i in 1:dim(R_mat)[1]){#
-		SSN_mat[,i] <- solve.analytical(Sp_mat[,1]/R_mat[i,2],Sp_mat[,2],R_mat[i,1],1)#
-	}#
-	rownames(SSN_mat) <- paste("Sp",1:dim(SSN_mat)[1])#
-	colnames(SSN_mat) <- paste("R",1:dim(SSN_mat)[2])#
-	if(combine){#
-		SSN_mat <- rowSums(SSN_mat)#
-	}#
-	SSN_mat#
-}
-theta_seq=c(1,2,3)
-Dr=0.5
-R=100
-Dr_seq=rep(Dr,3)
-solve.analytical(theta_seq,Dr_seq,R,1)
-solve.sameDr(theta_seq,Dr,R)
-get.C
-## MERA competition model#
-library(nleqslv)#
-#
-solve.sameDr <- function(theta_seq,Dr,R){#
-	base <- sum(theta_seq^(Dr/(Dr-1)))#
-	R* theta_seq^(1/(Dr-1))/base#
-}#
-#
-solve.analytical <- function(theta_seq,Dr_seq,R,r){##given r solve for N+g; r=1 is the special case for equilibrium where N+g=Ne#
-	if(length(theta_seq)==1){#
-		sol <- R/theta_seq[1]#
-	}else if(sum(Dr_seq!=mean(Dr_seq))==0){#
-		sol <- solve.sameDr(theta_seq,Dr_seq[1],R)#
-	}else{#
-		r_seq <- c(r,rep(1,length(theta_seq)-length(r)))#
-		C <- get.C(theta_seq,Dr_seq,R,r_seq)#
-		sol <- analytical.sol(C,theta_seq,Dr_seq,r_seq)#
-	}#
-	sol#
-}#
-#
-analytical.sol <- function(C,theta_seq,Dr_seq,r_seq){#
-	2/exp(1)*(C*theta_seq*r_seq^(0.5/theta_seq))^(1/(Dr_seq-1))#
-}#
-#
-get.C <- function(theta_seq,Dr_seq,R,r_seq){#
-	init.C <- 1/mean(theta_seq)#
-	C <- nleqslv(init.C,R_constraint,theta_seq=theta_seq,Dr_seq=Dr_seq,R=R,r_seq=r_seq)#
-	if(C[[3]]!=1&&C[[3]]!=2){#
-		print(C[[4]])#
-	}#
-	C[[1]]#
-}#
-#
-R_constraint <- function(C,theta_seq,Dr_seq,R,r_seq){#
-	R-sum(theta_seq*analytical.sol(C,theta_seq,Dr_seq,r_seq))#
-}#
-#
-steady.state.mR <- function(Sp_mat,R_mat,combine=T){#
-	SSN_mat <- matrix(ncol=dim(R_mat)[1],nrow=dim(Sp_mat)[1])#
-	for(i in 1:dim(R_mat)[1]){#
-		SSN_mat[,i] <- solve.analytical(Sp_mat[,1]/R_mat[i,2],Sp_mat[,2],R_mat[i,1],1)#
-	}#
-	rownames(SSN_mat) <- paste("Sp",1:dim(SSN_mat)[1])#
-	colnames(SSN_mat) <- paste("R",1:dim(SSN_mat)[2])#
-	if(combine){#
-		SSN_mat <- rowSums(SSN_mat)#
-	}#
-	SSN_mat#
-}
-basal
-library(nleqslv)
-?nleqslv
-source("1sp_growth.R")
-getwd()
-setwd("/Users/jadezhang/Documents/2015fall/Research/Unconstrained_MERA")
-getwd()
-source("1sp_growth.R")
-source("1sp_growth.R")
-source("1sp_growth.R")
-R0 <- 1000#
-Dr_seq <- c(0,0.5,1)#
-theta <- 1#
-r <- 1
-SSN <- solve_SSN(R0,Dr,theta)
-Dr=0
-SSN <- solve_SSN(R0,Dr,theta)
-SSN
-source("1sp_growth.R")
-SSN <- solve_SSN(R0,Dr,theta)
-SSN
-R0/theta
-Dr=1
-SSN <- solve_SSN(R0,Dr,theta)
-SSN
-Dr=0.5
-SSN <- solve_SSN(R0,Dr,theta)
-SSN
-Dr=0.3
-SSN <- solve_SSN(R0,Dr,theta)
-SSN
-Dr=0.1
-SSN <- solve_SSN(R0,Dr,theta)
-SSN
-Dr_seq <- c(0,0.1,1)
-i=1
-plot_growth(SSN,r,R0,Dr_seq[i],theta)
-SSN
-SSN <- solve_SSN(R0,Dr_seq[i],theta)
-SSN
-plot_growth(SSN,r,R0,Dr_seq[i],theta)
-plot_dynamic(SSN,r,R0,Dr_seq[i],theta)
-N_seq <- seq(1,200,length=50)
-g_seq <- unlist(lapply(N_seq,single_growth,r=r,R0=R0,Dr=Dr,theta=theta))
-Dr
-Dr=0
-g_seq <- unlist(lapply(N_seq,single_growth,r=r,R0=R0,Dr=Dr,theta=theta))
-single_growth
-r <- 5
-g_seq <- unlist(lapply(N_seq,single_growth,r=r,R0=R0,Dr=Dr,theta=theta))
 g_seq
 plot_growth(SSN,r,R0,Dr_seq[i],theta)
 i=2
@@ -682,14 +340,6 @@ for(i in 1:length(Dr_seq)){#
 			plot_dynamic(SSN,r,R0,Dr_seq[i],theta,nstep,ng=i,comp=F)#
 		}	#
 	}
-for(i in 1:length(Dr_seq)){#
-		SSN <- solve_SSN(R0,Dr_seq[i],theta)#
-		if(i ==1){#
-			plot_dynamic(SSN,r,R0,Dr_seq[i],theta,nstep,comp=F)#
-		}else{#
-			plot_dynamic(SSN,r,R0,Dr_seq[i],theta,nstep,ng=i,comp=F)#
-		}	#
-	}
 nstep=30
 for(i in 1:length(Dr_seq)){#
 		SSN <- solve_SSN(R0,Dr_seq[i],theta)#
@@ -722,4 +372,163 @@ Dr_seq <- c(1,0.1,0)#
 theta <- 1#
 r <- 4#
 #
+growth_function(r,R0,Dr_seq,theta,nstep=30)
+getwd()
+source("1sp_growth.R")
+R0 <- 100#
+Dr_seq <- c(1,0.1,0)#
+theta <- 1#
+r <- 4
+growth_function(r,R0,Dr_seq,theta,nstep=30)
+growth_function(r,R0,Dr_seq,theta,nstep=30)
+r <- 2.5
+growth_function(r,R0,Dr_seq,theta,nstep=30)
+theta <- 2
+growth_function(r,R0,Dr_seq,theta,nstep=30)
+theta <- 0.1
+growth_function(r,R0,Dr_seq,theta,nstep=30)
+theta <- 0.5
+growth_function(r,R0,Dr_seq,theta,nstep=30)
+theta <- 0.2
+growth_function(r,R0,Dr_seq,theta,nstep=30)
+r <- 1.5
+growth_function(r,R0,Dr_seq,theta,nstep=30)
+r <- 1.2
+growth_function(r,R0,Dr_seq,theta,nstep=30)
+r <- 1.1
+growth_function(r,R0,Dr_seq,theta,nstep=30)
+r <- 0.5
+growth_function(r,R0,Dr_seq,theta,nstep=30)
+r <- 0.2
+growth_function(r,R0,Dr_seq,theta,nstep=30)
+r <- 0.25
+growth_function(r,R0,Dr_seq,theta,nstep=30)
+r <- 0.3
+growth_function(r,R0,Dr_seq,theta,nstep=30)
+r <- 0.4
+growth_function(r,R0,Dr_seq,theta,nstep=30)
+r <- 0.5
+growth_function(r,R0,Dr_seq,theta,nstep=30)
+x=1:100
+plot(sqrt(x)~x)
+source("1sp_growth.R")
+R0 <- 100#
+Dr_seq <- c(1,0.1,0)#
+theta <- 1#
+r <- 0.5#
+#
+growth_function(r,R0,Dr_seq,theta,nstep=30)
+R0 <- 100#
+Dr_seq <- c(1,0.1,0)#
+theta <- 1#
+r <- 0.5#
+#
+growth_function(r,R0,Dr_seq,theta,nstep=30)
+r <- 0.1
+growth_function(r,R0,Dr_seq,theta,nstep=30)
+growth_function(r,R0,Dr_seq,theta,nstep=300)
+nstep=30
+N <- 1#
+	N_seq <- N#
+	t <- 1#
+	while (t <nstep){#
+		N <- N*(1+single_growth(r,R0,N,Dr,theta))#
+		N_seq <- c(N_seq,N)#
+		t <- t+1#
+	}
+Dr=0
+N <- 1#
+	N_seq <- N#
+	t <- 1#
+	while (t <nstep){#
+		N <- N*(1+single_growth(r,R0,N,Dr,theta))#
+		N_seq <- c(N_seq,N)#
+		t <- t+1#
+	}
+N_seq
+N_seq[2]
+theta
+r
+N=1
+r
+theta
+r0
+R0
+single_growth(r,R0,N,Dr,theta)
+(R0-theta*N)*(r*N)^(Dr-1)/(theta*((r*N)^Dr+1))
+(r*N)^(Dr-1)
+N
+r
+Dr
+0.1^-1
+R0/theta
+n
+N
+R0/theta-N
+(r*N)^Dr
+N
+r
+(r*N)^(Dr-1)
+(r*N)^(Dr-1)*r*N
+source("1sp_growth.R")
+R0 <- 100#
+Dr_seq <- c(1,0.1,0)#
+theta <- 1#
+r <- 0.1#
+#
+growth_function(r,R0,Dr_seq,theta,nstep=300)
+growth_function(r,R0,Dr_seq,theta,nstep=30)
+r <- 0.05
+growth_function(r,R0,Dr_seq,theta,nstep=30)
+r <- 0.01
+growth_function(r,R0,Dr_seq,theta,nstep=30)
+R0 <- 1000
+growth_function(r,R0,Dr_seq,theta,nstep=30)
+R0 <- 100
+growth_function(r,R0,Dr_seq,theta,nstep=30)
+r <- 0.001
+growth_function(r,R0,Dr_seq,theta,nstep=30)
+growth_function(r,R0,Dr_seq,theta,nstep=300)
+Dr_seq <- c(1,0.5,0)
+growth_function(r,R0,Dr_seq,theta,nstep=300)
+Dr_seq <- c(1,0.7,0)
+growth_function(r,R0,Dr_seq,theta,nstep=300)
+Dr_seq <- c(1,0.8,0)
+growth_function(r,R0,Dr_seq,theta,nstep=300)
+growth_function(r,R0,Dr_seq,theta,nstep=300)
+R0 <- 100000#
+Dr_seq <- c(1,0.8,0)#
+theta <- 100#
+r <- 1#
+#
+growth_function(r,R0,Dr_seq,theta,nstep=300)
+R0 <- 100000#
+Dr_seq <- c(1,0.8,0)#
+theta <- 100#
+r <- 1#
+#
+growth_function(r,R0,Dr_seq,theta,nstep=300)
+theta <- 1000
+growth_function(r,R0,Dr_seq,theta,nstep=300)
+theta <- 1
+growth_function(r,R0,Dr_seq,theta,nstep=300)
+R0 <- 100
+growth_function(r,R0,Dr_seq,theta,nstep=300)
+r <- 0.5
+growth_function(r,R0,Dr_seq,theta,nstep=300)
+r <- 0.1
+growth_function(r,R0,Dr_seq,theta,nstep=300)
+r <- 0.01
+growth_function(r,R0,Dr_seq,theta,nstep=300)
+growth_function(r,R0,Dr_seq,theta,nstep=30)
+r <- 2
+growth_function(r,R0,Dr_seq,theta,nstep=30)
+r <- 0.001
+growth_function(r,R0,Dr_seq,theta,nstep=30)
+growth_function(r,R0,Dr_seq,theta,nstep=300)
+growth_function(r,R0,Dr_seq,theta,nstep=100)
+r <- 0.01
+growth_function(r,R0,Dr_seq,theta,nstep=100)
+growth_function(r,R0,Dr_seq,theta,nstep=30)
+Dr_seq <- c(1,0.3,0.8,0)
 growth_function(r,R0,Dr_seq,theta,nstep=30)
