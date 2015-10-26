@@ -1,0 +1,155 @@
+\documentclass[12pt]{article}
+\usepackage{fullpage}
+\usepackage[margin=1in]{geometry}
+\usepackage[stable]{footmisc}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{IEEEtrantools}
+\usepackage{lineno}
+\usepackage{amsmath}
+\usepackage{epstopdf}
+\usepackage{parskip}
+\usepackage{authblk}
+\usepackage[authoryear]{natbib}
+%\setlength{\parskip}{20pt}
+\linespread{1.6}
+\date{}
+
+\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+
+
+%%	math short-cuts
+\def \ve{\varepsilon}	% epsilon used for metabolic rate
+\def \la{\lambda}	% lambda
+\newcommand{\eref}[1]{(\ref{#1})}
+
+%%	new commands for referencing figures and tables and sections
+\newcommand{\fref}[1]{Figure~\ref{#1}}	% inline figure ref
+\newcommand{\fpref}[1]{Fig.~\ref{#1}}	% parenthetical figure ref
+\newcommand{\tref}[1]{Table~\ref{#1}}	% table ref
+\newcommand{\sref}[1]{Section~\ref{#1}}	% table ref
+%\linenumbers
+
+\title{\Large \textbf{Predator prey interaction with new MERA}}
+
+\author{Jade, Oct 30}
+
+\begin{document}
+\maketitle
+\raggedright
+\large
+\setlength{\parindent}{15pt}
+
+Partial redistribution does not apply here!!! Population size has to be able to drop!!!
+
+\section{Growth functions for one predator preying on one prey}
+
+With the new MERA framework we have proved that the growth function for one species without competitors or predators is 
+  \begin{equation}
+ \begin{split}
+g =  \frac{r (1 - \frac{N}{\hat {N}})}{1 + (r-1) \frac{N}{\hat {N}}} \hskip 1cm \mbox{(partial redistribution)}\\
+= \frac{ r(1- \frac{N }{\hat{N}})} {1+ r \frac{N }{\hat{N}}}\hskip 1cm \mbox{(complete redistribution)}
+\end{split}
+\end{equation}
+
+We will look at partial redistribution scenario first. In this scenario, $\hat {N} = R_0/\theta$, therefore
+  \begin{equation}
+ \begin{split}
+g =  \frac{r (R_0 - \theta N)}{R_0 + (r-1) \theta N} 
+\end{split}
+\end{equation}
+
+In all following equations, subscript $p$ indicates prey variables while subscript $P$ indicates predator variables. 
+
+For the predator species, $R_0$ is the total amount of prey biomass available,
+  \begin{equation}
+ \begin{split}
+R_{0,P}  = \theta_{p}N_{p} 
+\end{split}
+\end{equation}
+
+ \begin{equation}
+ \begin{split}
+g_{P} =  \frac{r_{P} (\theta_{p} N_{p} - \theta_{P} N_{P} )}{ \theta_{p}N_{p} + (r_{P}-1) \theta_{P} N_{P}} 
+\end{split}
+\end{equation}
+
+The prey biomass actually consumed by the predator $C_p$ is 
+
+ \begin{equation}
+ \begin{split}
+C_p  = \theta_P N_P g_{P}\\
+ =  \frac{r_{P} \theta_P N_P(\theta_{p} N_{p} - \theta_{P} N_{P} )}{ \theta_{p}N_{p} + (r_{P}-1) \theta_{P} N_{P}} 
+\end{split}
+\end{equation}
+
+Before predation happens, the amount of resource the prey species obtains for its net growth is
+ \begin{equation}
+ \begin{split}
+R_p = \frac{r_{p}\theta_{p} N_{p} (R_0 - \theta_p N_p )}{ R_0 + (r_p-1) \theta_{p} N_{p}} 
+\end{split}
+\end{equation}
+
+After predation, the amount of prey biomass consumed by the predator $C_p$ has to be subtracted :
+ \begin{equation}
+ \begin{split}
+g_p =  \frac{R_p - C_p}{\theta_p N_p}  \\
+= \frac{r_{p} (R_0 - \theta_p N_p )}{ R_0 + (r_p-1) \theta_{p} N_{p}} - \frac{r_{P} \theta_P N_P(\theta_{p} N_{p} - \theta_{P} N_{P} )}{ \theta_p N_p [\theta_{p}N_{p} + (r_{P}-1) \theta_{P} N_{P}]}
+\end{split}
+\end{equation}
+
+Eqs 4 and 7 can be simplified into
+ \begin{equation}
+ \begin{split}
+g_{P} =  \frac{r_{P} (1 - \theta \frac{N_{P}}{N_{p}} )}{ 1+ (r_{P}-1) \theta \frac{N_{P}}{N_{p}}} 
+\end{split}
+\end{equation}
+ \begin{equation}
+ \begin{split}
+g_{p}  = \frac{r_{p} (1 - \frac {N_p}{\hat{N_p} })}{ 1 + (r_p-1) \frac {N_p}{\hat{N_p} }} - \frac{r_{P} \theta (1 - \theta  \frac{N_{P}}{N_{p}} )}{  \frac{N_{p}}{N_{P}} + \theta (r_{P}-1)} 
+\end{split}
+\end{equation}
+Where $\theta = \theta_P/\theta_p$, $\hat{N_p} = R_0/ \theta_p$. Since $g_P = \frac{d N_P}{N_P d t} $ and $g_p = \frac{d N_p}{N_p d t} $, they each correspond to:
+
+ \begin{equation}
+ \begin{split}
+ \frac{d N_P}{d t} = \frac{r_{P} N_P (1 - \theta \frac{N_{P}}{N_{p}} )}{ 1+ (r_{P}-1) \theta \frac{N_{P}}{N_{p}}} 
+\end{split}
+\end{equation}
+ \begin{equation}
+ \begin{split}
+ \frac{d N_p}{d t} = \frac{r_{p} N_p (1 - \frac {N_p}{\hat{N_p} })}{ 1 + (r_p-1) \frac {N_p}{\hat{N_p} }} - \frac{r_{P} N_p \theta (1 - \theta  \frac{N_{P}}{N_{p}} )}{  \frac{N_{p}}{N_{P}} +  \theta (r_{P}-1)} 
+\end{split}
+\end{equation}
+
+
+Similarly for the complete redistribution scenario,
+
+Prey has to minus not just the growth but the total consumptions!!
+
+ \begin{equation}
+ \begin{split}
+ \frac{d N_P}{d t} = \frac{r_{P} N_P ( 1 -  \theta  \frac{(r_{P} +1)N_{P}}{r_P N_{p}} )}{ 1+ (r_{P}+1) \theta \frac{N_{P}}{N_{p}}} 
+\end{split}
+\end{equation}
+ \begin{equation}
+ \begin{split}
+ \frac{d N_p}{d t} = \frac{r_{p} N_p (1 - \frac {N_p}{\hat{N_p} })}{ 1 + r_p \frac {N_p}{\hat{N_p} }}   - N_P  \theta
+\end{split}
+\end{equation}
+
+
+At the special case where $r_P = r_p = 1$, Eqs. 10 and 11 are simplified into
+ \begin{equation}
+ \begin{split}
+ \frac{d N_P}{d t} =  N_P (1 - \theta \frac{N_{P}}{N_{p}} )
+\end{split}
+\end{equation}
+ \begin{equation}
+ \begin{split}
+ \frac{d N_p}{d t} = N_p (1 - \frac {N_p}{\hat{N_p} }) - N_P \theta (1 - \theta  \frac{N_{P}}{N_{p}} )
+\end{split}
+\end{equation}
+
+
+\end{document}
