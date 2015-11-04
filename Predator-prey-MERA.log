@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  26 OCT 2015 15:39
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  3 NOV 2015 12:18
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -342,39 +342,63 @@ LaTeX Font Info:    ... okay on input line 37.
 \makeMPintoPDFobject=\count126
 \everyMPtoPDFconversion=\toks26
 )
-LaTeX Font Info:    Try loading font information for U+msa on input line 48.
+LaTeX Font Info:    Try loading font information for U+msa on input line 46.
  (/usr/local/texlive/2014/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 48.
+LaTeX Font Info:    Try loading font information for U+msb on input line 46.
 
 (/usr/local/texlive/2014/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
-{/usr/local/texlive/2014/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2] [3]
+{/usr/local/texlive/2014/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2]
+<predator-prey-dynamics.pdf, id=16, 390.13013pt x 338.68904pt>
+File: predator-prey-dynamics.pdf Graphic file (type pdf)
 
-(./Predator-prey-MERA.aux) ) 
+<use predator-prey-dynamics.pdf>
+Package pdftex.def Info: predator-prey-dynamics.pdf used on input line 125.
+(pdftex.def)             Requested size: 469.75502pt x 407.815pt.
+
+Overfull \hbox (15.0pt too wide) in paragraph at lines 125--126
+[][]  
+ []
+
+[3] [4 <./predator-prey-dynamics.pdf>] [5] [6]
+<predator-prey-dynamics-partial.pdf, id=249, 390.13013pt x 338.68904pt>
+File: predator-prey-dynamics-partial.pdf Graphic file (type pdf)
+
+<use predator-prey-dynamics-partial.pdf>
+Package pdftex.def Info: predator-prey-dynamics-partial.pdf used on input line 
+176.
+(pdftex.def)             Requested size: 469.75502pt x 407.815pt.
+
+Overfull \hbox (15.0pt too wide) in paragraph at lines 176--177
+[][]  
+ []
+
+[7 <./predator-prey-dynamics-partial.pdf>] [8] (./Predator-prey-MERA.aux) ) 
 Here is how much of TeX's memory you used:
- 3935 strings out of 493117
- 55574 string characters out of 6135433
- 128868 words of memory out of 5000000
- 7344 multiletter control sequences out of 15000+600000
- 7442 words of font info for 29 fonts, out of 8000000 for 9000
+ 3946 strings out of 493117
+ 55929 string characters out of 6135433
+ 126868 words of memory out of 5000000
+ 7353 multiletter control sequences out of 15000+600000
+ 7749 words of font info for 30 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 42i,18n,32p,332b,183s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2014/texmf-dist/fonts/type1/pub
-lic/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/publ
-ic/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/publi
-c/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public
-/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/a
-msfonts/cm/cmr10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/ams
-fonts/cm/cmr12.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmsy10.pfb>
-Output written on Predator-prey-MERA.pdf (3 pages, 77393 bytes).
+ 42i,18n,32p,725b,183s stack positions out of 5000i,500n,10000p,200000b,80000s
+</us
+r/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr
+/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/
+local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/l
+ocal/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/loc
+al/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local
+/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/t
+exlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texl
+ive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
+Output written on Predator-prey-MERA.pdf (8 pages, 860139 bytes).
 PDF statistics:
- 42 PDF objects out of 1000 (max. 8388607)
- 29 compressed objects within 1 object stream
+ 504 PDF objects out of 1000 (max. 8388607)
+ 374 compressed objects within 4 object streams
  0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 11 words of extra memory for PDF output out of 10000 (max. 10000000)
 
