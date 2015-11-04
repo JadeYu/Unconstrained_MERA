@@ -24,8 +24,8 @@ predator_prey <- function(inits,theta,rs,SSp,nstep,partial=T){
 }
 
 inits <- c(1,100)
-theta <- 10
-rs <- c(10000,10000)
+theta <- 2
+rs <- c(100,500)
 SSp <- 1000
 nstep <- 100
-predator_prey(inits,theta,rs,SSp,nstep,partial=F)
+predator_prey(inits,theta,rs,SSp,nstep,partial=T)
