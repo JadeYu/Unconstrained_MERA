@@ -1,5 +1,4 @@
 ##predator can be partial or complete
-
 predator_prey <- function(inits,theta,rs,SSp,nstep,partial=T){
 	predator <- inits[1]
 	prey <- inits[2]

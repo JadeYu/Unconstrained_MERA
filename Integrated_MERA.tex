@@ -141,15 +141,25 @@ Easy to see that the one species case with $D_{r,i}=0$ (see discussion) gives ex
 where $R_u = R_0 -\sum_i^{S_0}\theta_i \hat{N_i}$ is the amount of unused resource at steady state. From Eq. 13 we can see that when all species have the same intrinsic growth rate $r$, the steady state solution is the same as MERA I and II ($ \hat{N_i} \propto  \theta_i ^{\frac{1}{D_{r,i}-1}}$). However, when $r_i$ varies from species to species, the steady state solution is different. Specifically, all else equal, a species with higher intrinsic growth rate will have higher steady state abundance and resource content. This reveals another condition for EER (energy equivalence rule) to hold: not only $D_r$ but also $r$ has to be the same for all species. This is possibly another reason why it is so hard to find patterns supporting the original steady state solution in data; we have been overlooking the species variation in intrinsic growth rate.
 
 \section{Result}
-For multiple competitors.
+\subsection{Multiple competitors feeding on one constant resource}
+In the following figure a simple three-species case is shown: $\theta$ and $D_r$ are set to be equal among all species; intrinsic growth rate $r$ is varied across species; the absolute magnitude of $r$ and $D_r$ are changed among graphs to test their effects.
 
-For multiple predators preying on one prey species.
+\includegraphics[width=\textwidth]{integrated_multi_competitors.pdf}
+
+(Initial abundances are $N_1=5$,$N_2=50$,$N_3=100$. For upper left and lower left, $r_1=0.5$,$r_2=0.3$,$r_3=0.1$ while for upper right, all $r$s are scaled up by a factor of 10 ($r_1=5$,$r_2=3$,$r_3=1$). For upper left and upper right, $D_r=0.5$ for all species while for lower left, $D_r=0.1$ for all species.)
+
+As Eq. 13 suggests, with $\theta$ and $D_r$ the same for all species, the higher the intrinsic growth rate $r$, the higher the steady state abundance. The difference between upper left and lower left suggests that the smaller the $D_r$ (held same for all species), the more even the steady state abundance distribution or higher chance for existence, a result consistent with MERA I \& II. In addition, comparing upper left and right we can see that, the higher all $r$s are, the more uneven the steady state abundance distribution is, suggesting lower chance for coexistence. Seems that $r$ affects the eventual coexistence pattern in a similar way to $D_r$. Later I will discuss the potential inferences  from this result and how it affects empirical test of the theory.
+
+\subsection{Multiple predators feeding on one prey}
+
+\includegraphics[width=\textwidth]{integrated_multi_predators.pdf}
 
 \section{Discussion}
 Although $r_i$ plays a role in the steady state solution, as long as it scales with $\theta$ following a power-law relationship ($\mbox{log }r \propto \mbox{log }\theta$), $D_{r,i}$ can be estimated by regressing $\mbox{log }N$ against $\mbox{log }\theta$.
 
 The space measurement can still be tested.
 
+Time lag might create oscillations, as in discrete L-V.
 
 Why $D_{r,i}=0$ or $D_{r,i}=1$ for one species 
 
