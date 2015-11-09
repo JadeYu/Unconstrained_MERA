@@ -5,6 +5,9 @@ Drs <- c(0.5,0.5,0.5)
 R0 <- 200
 nstep <- 30
 
+multi_integrated(init.Ns=5,thetas=1,Drs=0.5,rs=1,R0=100,nstep=20)
+logi_growth(5,r=1,SSN=90.48,nstep=20)
+legend("bottomright",c("MERA","logistic"),pch=1,col=2:1)
 
 init.Ns <- c(5,50,100)
 init.Ns1 <- c(1,45,50,105)
@@ -42,7 +45,7 @@ multi_integrated_lag <- function(init.Ns0,init.Ns1,thetas,Drs,rs,R0,nstep){
 	time <- 1:nstep
 	for(sp in 1:length(Drs)){
 		if(sp==1){
-			plot(Nseq[,sp]~time,col=sp+1,ylim=range(Nseq),ylab="abundance")
+			plot(Nseq[,sp]~time,col=sp+1,ylim=range(Nseq),ylab="abundance",xlab=paste("time (Dr=",Drs[1],")"))
 		}else{
 			points(time,Nseq[,sp],col=sp+1)
 		}
@@ -61,7 +64,7 @@ multi_integrated <- function(init.Ns0,thetas,Drs,rs,R0,nstep){
 	time <- 1:nstep
 	for(sp in 1:length(Drs)){
 		if(sp==1){
-			plot(Nseq[,sp]~time,col=sp+1,ylim=range(Nseq),ylab="abundance")
+			plot(Nseq[,sp]~time,col=sp+1,ylim=range(Nseq),ylab="abundance",xlab=paste("time (Dr=",Drs[1],")"))
 		}else{
 			points(time,Nseq[,sp],col=sp+1)
 		}
@@ -117,4 +120,14 @@ get_SSN <- function(thetas,Drs,rs,R0){
 
 SS_constraint <- function(Ru,thetas,Drs,rs,R0){
 	R0-Ru-sum((thetas/rs/Ru)^(1/(Drs-1))*thetas)
+}
+
+logi_growth <- function(init,r,SSN,nstep){
+	Nseq <- numeric(nstep)
+	Nseq[1] = init
+	for(i in 2:nstep){
+		Nseq[i] = Nseq[i-1]*(1+ r* (1-Nseq[i-1]/SSN))
+	}
+	time <- 1:nstep
+	points(time,Nseq)
 }
