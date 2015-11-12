@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  12 NOV 2015 15:33
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  12 NOV 2015 12:27
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**Integrated_MERA.tex
-(./Integrated_MERA.tex
+**Sojourn_Oscillations.tex
+(./Sojourn_Oscillations.tex
 LaTeX2e <2014/05/01>
 Babel <3.9k> and hyphenation patterns for 78 languages loaded.
 (/usr/local/texlive/2014/texmf-dist/tex/latex/base/article.cls
@@ -278,8 +278,8 @@ Package: natbib 2010/09/13 8.31b (PWD, AO)
 LaTeX Info: Redefining \cite on input line 694.
 \c@NAT@ctr=\count120
 )
-(./Integrated_MERA.aux)
-\openout1 = `Integrated_MERA.aux'.
+No file Sojourn_Oscillations.aux.
+\openout1 = `Sojourn_Oscillations.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 37.
 LaTeX Font Info:    ... okay on input line 37.
@@ -293,7 +293,6 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 37.
 LaTeX Font Info:    ... okay on input line 37.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 37.
 LaTeX Font Info:    ... okay on input line 37.
-
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
@@ -342,82 +341,37 @@ LaTeX Font Info:    ... okay on input line 37.
 \makeMPintoPDFobject=\count126
 \everyMPtoPDFconversion=\toks26
 )
-LaTeX Font Info:    Try loading font information for U+msa on input line 42.
+LaTeX Font Info:    Try loading font information for U+msa on input line 43.
  (/usr/local/texlive/2014/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 42.
+LaTeX Font Info:    Try loading font information for U+msb on input line 43.
 
 (/usr/local/texlive/2014/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-)
-(./Integrated_MERA.toc [1
+) [1
 
-{/usr/local/texlive/2014/texmf-var/fonts/map/pdftex/updmap/pdftex.map}])
-\tf@toc=\write3
-\openout3 = `Integrated_MERA.toc'.
+{/usr/local/texlive/2014/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2] [3]
 
- (./Integrated_MERA.lof)
-\tf@lof=\write4
-\openout4 = `Integrated_MERA.lof'.
-
- [2] [3]
-<integrated_demo.pdf, id=21, 1136.0844pt x 562.2606pt>
-File: integrated_demo.pdf Graphic file (type pdf)
-
-<use integrated_demo.pdf>
-Package pdftex.def Info: integrated_demo.pdf used on input line 83.
-(pdftex.def)             Requested size: 469.75502pt x 232.48444pt.
- [4] [5 <./integrated_demo.pdf>] [6] [7]
-<integrated_multi_competitors.pdf, id=38, 397.8048pt x 338.68904pt>
-File: integrated_multi_competitors.pdf Graphic file (type pdf)
-
-<use integrated_multi_competitors.pdf>
-Package pdftex.def Info: integrated_multi_competitors.pdf used on input line 15
-5.
-(pdftex.def)             Requested size: 469.75502pt x 399.96486pt.
- [8] [9 <./integrated_multi_competitors.pdf>] <integrated_multi_predators.pdf, 
-id=198, 422.108pt x 339.30153pt>
-File: integrated_multi_predators.pdf Graphic file (type pdf)
-
-<use integrated_multi_predators.pdf>
-Package pdftex.def Info: integrated_multi_predators.pdf used on input line 163.
-
-(pdftex.def)             Requested size: 469.75502pt x 377.61285pt.
- [10 <./integrated_multi_predators.pdf>]
-<single_species_Dreffect.pdf, id=349, 544.56078pt x 445.665pt>
-File: single_species_Dreffect.pdf Graphic file (type pdf)
-
-<use single_species_Dreffect.pdf>
-Package pdftex.def Info: single_species_Dreffect.pdf used on input line 175.
-(pdftex.def)             Requested size: 469.75502pt x 384.46127pt.
- [11] [12 <./single_species_Dreffect.pdf>]
-[13] [14] [15] (./Integrated_MERA.aux) ) 
+(./Sojourn_Oscillations.aux) ) 
 Here is how much of TeX's memory you used:
- 3987 strings out of 493117
- 56530 string characters out of 6135433
- 125891 words of memory out of 5000000
- 7379 multiletter control sequences out of 15000+600000
- 12096 words of font info for 47 fonts, out of 8000000 for 9000
+ 3933 strings out of 493117
+ 55542 string characters out of 6135433
+ 123904 words of memory out of 5000000
+ 7344 multiletter control sequences out of 15000+600000
+ 7442 words of font info for 29 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 42i,17n,32p,1458b,233s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2014/texmf-dist/fon
-ts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2014/texmf-dist/font
-s/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2014/texmf-dist/fonts
-/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2014/texmf-dist/fonts/
-type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2014/texmf-dist/fonts/t
-ype1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2014/texmf-dist/fonts/typ
-e1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1
-/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/p
-ublic/amsfonts/cm/cmr12.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/pub
-lic/amsfonts/cm/cmr7.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public
-/amsfonts/cm/cmr8.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/am
-sfonts/cm/cmsy10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/ams
-fonts/cm/cmsy7.pfb>
-Output written on Integrated_MERA.pdf (15 pages, 990547 bytes).
+ 42i,4n,32p,941b,183s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/local/texlive/2014/texmf-dist/fonts/type1/p
+ublic/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/pub
+lic/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/publ
+ic/amsfonts/cm/cmr12.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public
+/amsfonts/cm/cmsy10.pfb>
+Output written on Sojourn_Oscillations.pdf (3 pages, 57343 bytes).
 PDF statistics:
- 565 PDF objects out of 1000 (max. 8388607)
- 417 compressed objects within 5 object streams
+ 34 PDF objects out of 1000 (max. 8388607)
+ 23 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 21 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

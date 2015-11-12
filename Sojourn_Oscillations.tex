@@ -1,0 +1,57 @@
+\documentclass[12pt]{article}
+\usepackage{fullpage}
+\usepackage[margin=1in]{geometry}
+\usepackage[stable]{footmisc}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{IEEEtrantools}
+\usepackage{lineno}
+\usepackage{amsmath}
+\usepackage{epstopdf}
+\usepackage{parskip}
+\usepackage{authblk}
+\usepackage[authoryear]{natbib}
+%\setlength{\parskip}{20pt}
+\linespread{1.6}
+\date{}
+
+\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+
+
+%%	math short-cuts
+\def \ve{\varepsilon}	% epsilon used for metabolic rate
+\def \la{\lambda}	% lambda
+\newcommand{\eref}[1]{( {#1})}
+
+%%	new commands for referencing figures and tables and sections
+\newcommand{\fref}[1]{Figure~\ref{#1}}	% inline figure ref
+\newcommand{\fpref}[1]{Fig.~\ref{#1}}	% parenthetical figure ref
+\newcommand{\tref}[1]{Table~\ref{#1}}	% table ref
+\newcommand{\sref}[1]{Section~\ref{#1}}	% table ref
+%\linenumbers
+
+\title{\Large \textbf{Generating oscillations in MERA: differential generation time among species}}
+
+\author{Jade, Nov 16}
+
+\begin{document}
+\maketitle
+\raggedright
+\large
+\setlength{\parindent}{15pt}
+
+From result in the previous write-up we can see that, with the intrinsic growth rate $r$ being different among competing species, the dynamics is smooth even when $r$ has very high magnitude. Variations can be non-monotonic (for the intermediate species) but still all species converge fast to steady states. Here I will explore the time related assumptions of MERA, relax them and try to create oscillations. From the result we can see that the difference in generation time is at the root of population oscillations.
+
+\section{Oscillation, discretion and time lag}
+We all know that the discrete logistic growth equation leads to oscillations around the steady state when intrinsic growth rate is high, while its continuous counterpart does not. One way to look at this is that, in the discrete model, there is a time lag (the length of $\Delta t$) for the population to react to the effects imposed by its size. During this period, information (i.e. population size) is not updated and the population grows at the same speed as at the beginning of the period, creating a chance for over shooting. In the continuous model, however, there is no time lag and information is instantly updated, therefore the population can adjust its growth rate instantly in response to its own size, leaving no chance for over shooting. 
+
+Now let's look at MERA. In MERA, the population grows every time resource is allocated, assuming that the generation time is the same as the resource allocation period. Therefore, although MERA is seemingly a discrete model, it actually more closely describes a continuous growth process since there is no time lag for population growth rate to react to its abundance, which is the reason why we do not see oscillations in MERA predictions. However, if a time lag is introduced into MERA, i.e. population size does not change every time resource is allocated, or resource needs to be accumulated for several allocation periods before population size changes, a different dynamic pattern (possibly with oscillations) is expected. This is a particularly important assumption to explore not only for the single species case, but also for multiple species cases since we know that species do differ in generation time.
+
+\section{Introducing generation time into MERA}
+To relax the previous assumption of species generation time is the same with resource allocation period, here an extra parameter $G_i$ is introduced to represent the generation time for species $i$, or the number of allocation periods resource has to be accumulated before the population size of species $i$ changes. It is assumed that an integer, which is an approximation of reality and should be accurate enough when resource allocation period is much smaller than the generation time. The resource is assumed to be vital so the population cannot grow before resource is allocated so $G_i \geq 1$. Although complications in real world could generate violations of these assumptions, I think we should be fine to bear with them just to take a first look at the effect of $G_i$.
+
+
+
+
+
+\end{document}

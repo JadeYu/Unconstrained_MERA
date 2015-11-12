@@ -1,0 +1,9 @@
+\contentsline {section}{\numberline {1}The integrated model}{2}
+\contentsline {subsection}{\numberline {1.1}Quick recap of MERA II}{2}
+\contentsline {subsection}{\numberline {1.2}Combine II and III: allocation with upper limits for species boxes}{4}
+\contentsline {section}{\numberline {2}Result}{7}
+\contentsline {subsection}{\numberline {2.1}A new steady state solution involving $r_i$}{7}
+\contentsline {subsection}{\numberline {2.2}Population dynamics for multiple competitors/predators}{8}
+\contentsline {section}{\numberline {3}Discussion}{11}
+\contentsline {subsection}{\numberline {3.1}The $D_r$ of a single species community}{11}
+\contentsline {subsection}{\numberline {3.2}Test the new steady state solution}{14}

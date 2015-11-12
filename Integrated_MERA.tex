@@ -30,9 +30,9 @@
 \newcommand{\sref}[1]{Section~\ref{#1}}	% table ref
 %\linenumbers
 
-\title{\Large \textbf{Integrated MERA: combining MERA I, II, and III}}
+\title{\Large \textbf{Integrated MERA: combining resource acquisition and allocation}}
 
-\author{Jade, Nov 10}
+\author{Jade, Nov 12}
 
 \begin{document}
 \maketitle
@@ -41,7 +41,11 @@
 \setlength{\parindent}{15pt}
 Here I will merge 1) resource allocation among species and individuals as is described by MERA I \& II and 2) resource acquisition by all species from the environment as is described by MERA III, and develop an integrated model of MERA. In the solution we can see that some of the properties of I, II and III are retained but there are also new properties emerging: not only $\theta$ and $D_r$, the intrinsic growth rate $r$ of the species also affects its steady state abundance.
 
-\section{Quick recap of MERA II}
+\tableofcontents
+\listoffigures
+
+\section{The integrated model}
+\subsection{Quick recap of MERA II}
 First let's recall the generalized $W_{total}$ derived from MERA II (June 8 write up):
  \begin{equation}
  \begin{split}
@@ -67,22 +71,23 @@ Substituting Eq. 2 into Eq. 1 we get
  =>  R_i = R_0 \frac{N_i^{D_{r,i}}}{\sum^{S_0}_j {N_j}^{D_{r,j}}}
 \end{split}
 \end{equation}
-A problem of this solution is that, there is no upper limit to how many resources a species can get. Specifically, if $R_0$ is big enough, $R_i$ can be big even if $N_i$ is small, generating unrealistically huge growth. Below I will show how MERA III helps solve this problem.
+From Eq. 4 we can see a problem of the MERA II solution is that, there is no upper limit to how many resources a species can get. Specifically, if $R_0$ is big enough, $R_i$ can be big even if $N_i$ is small, generating unrealistically huge growth. Below I will show how integrating MERA III helps solve this problem.
 
-\section{Combine II and III: allocation with upper limits for species boxes}
+\subsection{Combine II and III: allocation with upper limits for species boxes}
 In MERA III, we have introduced a resource acquisition procedure where resource in the environment are randomly allocated to resource acquisition activities of the species, the magnitude of which is regulated by the species current abundance $N$ and intrinsic growth rate $r$ (from here on I will call this value the resource capacity of the species, given its $r$ and $N$ at the time). The allocation stopped at the community level, not considering distribution of the resource among or within species. Here I will introduce an integrated procedure to allocate resources in the environment 1) to species resource capacity boxes (regulated by $N$ and $r$), then 2) within each species to individuals. 
 
-*My original thought was to use MERA III to determine the resource constraint for the whole community, then apply MERA I or II to get species and individual level distributions. This turns out not to work as expected since although it can make sure the total resource capacity for the community is not surpassed, it does not guarantee for every single species not to surpass its resource capacity. Therefore the resource capacity boxes cannot be lumped  and species level allocation has to happen simultaneously with acquisition. Under this framework, the concept for community-level resource constraint is not necessary any more. *
+(Foot note: My original thought was to use MERA III to determine the resource constraint for the whole community, then apply MERA I or II to get species and individual level distributions. This turns out not to work as expected since although it can make sure the total resource capacity for the community is not surpassed, it does not guarantee for every single species not to surpass its own resource capacity. Therefore the resource capacity boxes cannot be lumped  and species level allocation has to happen simultaneously with acquisition.)
 
-graph demo
+\begin{figure}
+\caption{Resource allocation with upper limits for species boxes.}
+\includegraphics[width=\textwidth]{integrated_demo.pdf}
+\end{figure}
 
-$C_i$ is the resource capacity for species $i$:
+In Fig. 1, notice that although resource units, acquisition capacity boxes and individuals are colored the same for each species, they are regarded as distinguishable (for individuals, it depends on the value of $D_r$). $C_i$ is the resource capacity for species $i$:
  \begin{equation}
 C_i = (r_i+1)N_i \theta_i
 \end{equation}
-$R_i$ is the actual amount of resources allocated to species $i$. 
-
-The total number of microstates for a given species-level resource distribution $R_i$ ($i$ in 1, ..., $S_0$) is
+$R_i$ is the actual amount of resources allocated to species $i$. The total number of microstates for a given species-level resource distribution $R_i$ ($i$ in 1, ..., $S_0$) is
  \begin{equation}
  \begin{split}
 W_{total}(R_{1,..., S_0})  =  \prod_i^{S_0}W_{acquisition,i} \times W_{across} \times\prod_i^{S_0}W_{within,i} ^{D_{r,i}}
@@ -130,7 +135,9 @@ Maximizing $ \mbox{log }W_{total}$ (no constraint) yields
 R_i^2 = (C_i-R_i)(R_0 -\sum_i^{S_0}R_i) N_i ^{D_{r,i}}
 \end{equation}
 
-Easy to see that the one species case with $D_{r,i}=0$ (see discussion) gives exactly the same solution as the previous MERA III (write-up Oct 16). For an arbitrary set of $N_i$s $R_i$ has to numerically solved with $S_0$ simultaneous equations (Eq. 12 for all species). At steady state however, since the resource allocated to each species happen to provide for exactly the current abundance, or  $\hat{R_i} = \theta_i \hat{N_i}$, we have
+\section{Result}
+\subsection{A new steady state solution involving $r_i$}
+Easy to see that the one species case with $D_{r,i}=0$ (see discussion 3.1) gives exactly the same solution as the previous MERA III (write-up Oct 16). For an arbitrary set of $N_i$s $R_i$ has to numerically solved with $S_0$ simultaneous equations (Eq. 12 for all species). At steady state however, since the resource allocated to each species happen to provide for exactly the current abundance, or  $\hat{R_i} = \theta_i \hat{N_i}$, we have
   \begin{equation}
    \begin{split}
 (\theta_i \hat{N_i})^2 =\hat{R_i}^2=  [(r_i+1)\theta_i \hat{N_i} -\theta_i \hat{N_i}](R_0 -\sum_i^{S_0}\theta_i \hat{N_i}) \hat{N_i} ^{D_{r,i}}
@@ -140,54 +147,60 @@ Easy to see that the one species case with $D_{r,i}=0$ (see discussion) gives ex
 \end{equation}
 where $R_u = R_0 -\sum_i^{S_0}\theta_i \hat{N_i}$ is the amount of unused resource at steady state. From Eq. 13 we can see that when all species have the same intrinsic growth rate $r$, the steady state solution is the same as MERA I and II ($ \hat{N_i} \propto  \theta_i ^{\frac{1}{D_{r,i}-1}}$). However, when $r_i$ varies from species to species, the steady state solution is different. Specifically, all else equal, a species with higher intrinsic growth rate will have higher steady state abundance and resource content. This reveals another condition for EER (energy equivalence rule) to hold: not only $D_r$ but also $r$ has to be the same for all species. This is possibly another reason why it is so hard to find patterns supporting the original steady state solution in data; we have been overlooking the species variation in intrinsic growth rate.
 
-\section{Result}
-\subsection{Multiple competitors feeding on one constant resource}
-In the following figure a simple three-species case is shown: $\theta$ and $D_r$ are set to be equal among all species; intrinsic growth rate $r$ is varied across species; the absolute magnitude of $r$ and $D_r$ are changed among graphs to test their effects.
+\subsection{Population dynamics for multiple competitors/predators}
+In Fig. 2 a simple three-species case is shown: $\theta$ and $D_r$ are set to be equal among all species; intrinsic growth rate $r$ is varied across species; the absolute magnitude of $r$ and $D_r$ are changed among graphs to test their effects.
 
+\begin{figure}
+\caption{Three competitors feeding on one constant resource.}
 \includegraphics[width=\textwidth]{integrated_multi_competitors.pdf}
-\begin{center}
-Fig. 1 Three competitors feeding on one constant resource. Initial abundances are $N_1=5$,$N_2=50$,$N_3=100$. For upper left and lower left, $r_1=0.5$,$r_2=0.3$,$r_3=0.1$ while for upper right, all $r$s are scaled up by a factor of 10 ($r_1=5$,$r_2=3$,$r_3=1$). For upper left and upper right, $D_r=0.5$ for all species while for lower left, $D_r=0.1$ for all species.
-\end{center}
+Initial abundances are $N_1=5$,$N_2=50$,$N_3=100$. For upper left and lower left, $r_1=0.5$,$r_2=0.3$,$r_3=0.1$ while for upper right, all $r$s are scaled up by a factor of 10 ($r_1=5$,$r_2=3$,$r_3=1$). For upper left and upper right, $D_r=0.5$ for all species while for lower left, $D_r=0.1$ for all species.
+\end{figure}
 
 As Eq. 13 suggests, with $\theta$ and $D_r$ the same for all species, the higher the intrinsic growth rate $r$, the higher the steady state abundance. The difference between upper left and lower left suggests that the smaller the $D_r$ (held same for all species), the more even the steady state abundance distribution or higher chance for existence, a result consistent with MERA I \& II. In addition, comparing upper left and right we can see that, the higher all $r$s are, the more uneven the steady state abundance distribution is, suggesting lower chance for coexistence. Seems that $r$ affects the eventual coexistence pattern in a similar way to $D_r$. Later I will discuss the potential inferences  from this result and how it affects empirical test of the theory.
 
-\subsection{Multiple predators feeding on one prey}
-
+\begin{figure}
+\caption{Three predators feeding on one prey.}
 \includegraphics[width=\textwidth]{integrated_multi_predators.pdf}
-
-\begin{center}
 The three predators have the same parameter setting as above, for the prey $N_{prey}=1000$, $D_{r,prey}=0$, $\theta_{prey}=1$, the fundamental resource $R_0= 5000$.
-\end{center}
+\end{figure}
 
-We can see that the bigger the magnitude of predator intrinsic growth rates (upper right compared to upper left), the more drastic the oscillation. Smaller predator $D_r$, however, leads to less oscillation in addition to more even steady state abundance distribution.
+From Fig. 3 we can see that the bigger the magnitude of predator intrinsic growth rates (upper right compared to upper left), the more drastic the oscillation. Smaller predator $D_r$, however, leads to less oscillation in addition to more even steady state abundance distribution.
 
 \section{Discussion}
 \subsection{The $D_r$ of a single species community}
-Previously in write-up (Oct 16) we have shown that not considering within-species allocation, maximizing resource acquisition macrostates gives a one species growth function slightly slower than predicted by the logistic growth function under the same intrinsic growth rate and carrying capacity (we are talking about the complete redistribution scenario; as you can see, the model developed in this write-up does not assume resource to be fixed in the population once obtained, consistent with the complete scenario). From Eq. 13 we can see that this is actually equivalent to setting $D_r=0$ for the one species. If we change the value of $D_r$, the shape of the growth function varies:
+Previously in write-up (Oct 16) we have shown that not considering within-species allocation, maximizing resource acquisition macrostates gives a one species growth function slightly slower than predicted by the logistic growth function under the same intrinsic growth rate and carrying capacity (we are talking about the complete redistribution scenario; as you can see, the model developed in this write-up does not assume resource to be fixed in the population once obtained, consistent with the complete scenario). From Eq. 13 we can see that this is actually equivalent to setting $D_r=0$ for the one species. If we change the value of $D_r$, the shape of the growth function varies.
 
+\begin{figure}
+\caption{Single species growth function under different $D_r$s.}
 \includegraphics[width=\textwidth]{single_species_Dreffect.pdf}
+\end{figure}
 
-We can see that as $D_r$ increases, the predicted growth function gets faster and faster compared to the logistic growth function with the same intrinsic growth rate and carrying capacity and the relative steepness between them reverses. When $D_r=1$, the predicted growth function is faster than the logistic growth function; when $D_r=0.5$, they almost completely overlap.
+
+From Fig. 4 we can see that as $D_r$ increases, the predicted growth function gets faster and faster compared to the logistic growth function with the same intrinsic growth rate and carrying capacity and the relative steepness between them reverses. When $D_r=1$, the predicted growth function is faster than the logistic growth function; when $D_r=0.5$, they almost completely overlap.
 
 This result has proved that the logistic growth function might be a special case of the model when $D_r=0.5$. In addition to that, I also want to trigger a discussion about what $D_r$ should be in this case, i.e. when there is only one species in the community. 
 
 Based on our current definition and interpretation, $D_r$ is the relative individual distinguishability within the species compared to across species, proxied by the within-species variation (e.g. in certain functional trait) divided by the community variation. Given this, one way to look at the one species case is that since there is only one species, community level variation is the same as within-species variation, therefore $D_r$ should be 1. Then species should always growth faster than the logistic growth function when it is the only species in the community. On the other hand, if we treat the ``unused box'' as the other species (with $D_r=0$), the conclusion might be different: the community level variation has to include the ``unused box'', $D_r$ should be smaller than 1. The actual value of $D_r$ has to be determined by how different the species is from the ``unused box''. If this difference is much bigger than the difference between individuals within the species, then $D_r$ could still be close to 0. In practice, this will probably depend on what the ``unused box'' is, and how different conspecific individuals can be. But it is more natural for me to think that the difference between species and the ``unused box'' ( or ``natural sink''?) is much bigger than the difference between any two individuals within the species, which means $D_r$ is close to 0. Maybe that is not always the case.
 
-The effect of the ``unused box'' gets smaller when there are more species so I don't think it affects the development and test of the theory in multi-species communities. Just for the single-species case it is worth some further thoughts.
-
-\subsection{Oscillation, discretion and time lag}
-From Fig. 1 we can see that, with the intrinsic growth rate $r$ being different among the species, the dynamics is smooth even when $r$ has very high magnitude. Variations can be non-monotonic (for the intermediate species) but converge fast to steady states.
-
-We all know that discrete Lotka-Volterra equations can generate oscillations while their continuous counterparts do not. I think there are two main conditions for oscillations to happen: 1) there is no hard constraint on the total abundance or total metabolic energy of the community, which means the community might not converge to a stable steady state; 2) there is a time lag for populations to react: populations do not change continuously but burst growth in discrete steps (so that populations can over shoot). Only when both conditions are met can populations oscillate. For MERA, the hard constraint on total resource use ensures that populations cannot overshoot.
-
-Add waiting time.
-
+Finally in my opinion, the effect of the ``unused box'' gets smaller when there are more species so I don't think it affects the development and test of the theory in multi-species communities. Just for the single-species case it is worth some further thoughts.
 
 \subsection{Test the new steady state solution}
 
-Although $r_i$ plays a role in the steady state solution, as long as it scales with $\theta$ following a power-law relationship ($\mbox{log }r \propto \mbox{log }\theta$), $D_{r,i}$ can be estimated by regressing $\mbox{log }N$ against $\mbox{log }\theta$.
+Now that we know that $r_i$ plays a role in the steady state solution, the testing of MERA has to take it into consideration. It would be great if we could have data on the intrinsic growth rate of each species in a community to put into Eq. 13, but often times we do not. To proceed with the test without this information, a first approximation can be applied, assuming intrinsic growth rate is a function of $\theta$. I need to look further into allometric relationships that could lead to the form of this function but for now I am going to assume that they follow a power law relationship and $r$ is a negative function of $\theta$: 
+\begin{equation}
+r_i = r_0 \theta_i^{-a}
+\end{equation}
+$r_0$ and $a$ are positive constants. With this, Eq. 13 can be transformed into
 
-The space measurement can still be tested.
+\begin{equation}
+\begin{split}
+ \mbox{log }\hat{N_i} = \frac{1}{D_{r,i}-1} [ \mbox{log } \theta_i + a  \mbox{log } (r_0 \theta_i) -  \mbox{log }R_u]\\
+ => \mbox{log } \theta_i = \frac{1}{1+a} (D_{r,i}-1)  \mbox{log }\hat{N_i} + C
+ \end{split}
+\end{equation}
+Where $C =  \frac{1}{1+a} ( \mbox{log }R_u - a \mbox{log } r_0)$ is a constant. This suggests that we can do a linear regression between $\mbox{log } \theta_i $ and $\mbox{log } N_i $ to get $C$, then substitute it back into Eq. 15 to calculate the species-specific slope ($\frac{1}{1+a} (D_{r,i}-1)$), which is a linear function of $D_{r,i}$. Then these values can be compared with other measures of $D_r$ (e.g. from spatial patterns) to do a consistency test of MERA. 
+
+Again this test is based on the assumption of a power law relationship between $r$ and $\theta$ (Eq. 14). Once accomplished I will summarize the results in future write-ups.  
 
 
 \end{document}
