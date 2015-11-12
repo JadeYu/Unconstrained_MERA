@@ -176,7 +176,12 @@ Based on our current definition and interpretation, $D_r$ is the relative indivi
 The effect of the ``unused box'' gets smaller when there are more species so I don't think it affects the development and test of the theory in multi-species communities. Just for the single-species case it is worth some further thoughts.
 
 \subsection{Oscillation, discretion and time lag}
-Time lag might create oscillations, as in discrete L-V.
+From Fig. 1 we can see that, with the intrinsic growth rate $r$ being different among the species, the dynamics is smooth even when $r$ has very high magnitude. Variations can be non-monotonic (for the intermediate species) but converge fast to steady states.
+
+We all know that discrete Lotka-Volterra equations can generate oscillations while their continuous counterparts do not. I think there are two main conditions for oscillations to happen: 1) there is no hard constraint on the total abundance or total metabolic energy of the community, which means the community might not converge to a stable steady state; 2) there is a time lag for populations to react: populations do not change continuously but burst growth in discrete steps (so that populations can over shoot). Only when both conditions are met can populations oscillate. For MERA, the hard constraint on total resource use ensures that populations cannot overshoot.
+
+Add waiting time.
+
 
 \subsection{Test the new steady state solution}
 
