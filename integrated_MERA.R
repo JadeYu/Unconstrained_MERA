@@ -1,9 +1,16 @@
 init.Ns <- c(5,50,100)
-rs <- c(1,0.5,0.1)
+rs <- c(0.08,0.05,0.02)
 thetas <- c(1,1,1)
-Drs <- c(0.5,0.5,0.5)
-R0 <- 200
-nstep <- 30
+Drs <- c(0.1,0.1,0.1)
+Gs <- c(1,50,10)
+R0 <- 10000
+nstep <- 1000
+
+multi_integrated(init.Ns,thetas,Drs,rs,Gs,R0,nstep)
+plot.new()
+legend("bottomleft",paste("species",1:3),col=2:4,pch=1)
+
+##single species
 
 multi_integrated(init.Ns=5,thetas=1,Drs=0.5,rs=1,R0=100,nstep=20)
 logi_growth(5,r=1,SSN=90.48,nstep=20)
