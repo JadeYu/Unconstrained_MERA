@@ -50,7 +50,7 @@ multi_integrated <- function(init.Ns0,thetas,Drs,rs,Gs,R0,nstep){
 	time <- 1:nstep
 	for(sp in 1:length(Drs)){
 		if(sp==1){
-			plot(Nseq[,sp]~time,col=sp+1,ylim=range(Nseq),ylab="abundance",xlab=paste("time (mean(r)=",mean(rs),")"))
+			plot(Nseq[,sp]~time,col=sp+1,ylim=range(Nseq),ylab="abundance",xlab=paste("time (Dr=",mean(Drs),")"))
 		}else{
 			points(time,Nseq[,sp],col=sp+1)
 		}

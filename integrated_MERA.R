@@ -12,7 +12,7 @@ legend("bottomleft",paste("species",1:3),col=2:4,pch=1)
 
 ##single species
 
-multi_integrated(init.Ns=5,thetas=1,Drs=0.5,rs=1,R0=100,nstep=20)
+multi_integrated(init.Ns=5,thetas=1,Drs=0,rs=1,Gs=1,R0=500,nstep=50)
 logi_growth(5,r=1,SSN=90.48,nstep=20)
 legend("bottomright",c("MERA","logistic"),pch=1,col=2:1)
 
