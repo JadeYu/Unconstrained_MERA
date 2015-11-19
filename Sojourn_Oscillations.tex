@@ -97,13 +97,18 @@ For all four graphs $ N_{1,t=0}=5, N_{2,t=0}=50,N_{3,t=0}=100, \theta_1=\theta_2
 
 From Fig. 4 and Fig. 5 we can see that, when there are species with generation time bigger than 1, populations for all species (including those with generation time equal to 1) oscillate. Fig. 4 shows that similar to the single species case, bigger $r$ for all species leads to more oscillations. However, Fig. 5 shows that bigger $D_r$ for all species leads to reduced oscillations, which is contrary to the single species case. This suggests that there is probably a tradeoff between intra- and interspecific competition in generating oscillations. In future analysis I will look into more parameter settings.
 
-\section{Discussion: fitting the new model with allocation period and generation time}
+\section{Discussion}
 
-In classic models they assume resource allocation is continuous. To compare with that, simply assume allocation period to be very small. Then $R_0$ and $\theta$ and $r$ are all very small.
+\subsection{Implications}
 
- Then only one extra parameter: $G_i$. Previous clock is only in $r_i$, now in $G_i$ also. $R_0$ and $\theta$ only ratio matters.
+Not only intrinsic growth rate, but also generation time matters. Tradeoff: when generation time is $>1$ allocation period, bigger $D_r$ gives higher steady state but also higher oscillations. Motivation for each single species not to have too high $D_r$.
 
-Or fit one extra parameter, assuming resource allocation can be continuous or discrete.
+\subsection{How to test}
+Challenge is that time parameters include not just generation time, but also allocation period. Might be guessed. Might use the smallest generation time in the community. Might be fitted. 
+
+Allocation period does affect outcome. (control for instantaneous growth rates, resource input and requirements, potentially with differential generation time, see if smaller allocation period reduces community's ability to acquire resources). A community character. 
+
+$R_0$ and $\theta$ only ratio matters.
 
 Simulate with two models one with larger resource allocation period, the other with smaller allocation period (all else equal ratio dependent, bigger $G$ smaller $R_0$, $\theta$ and $r$) see if allocation period is trivial.
 
