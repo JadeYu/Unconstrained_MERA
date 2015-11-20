@@ -1,13 +1,13 @@
 library(nleqslv)
 
-test_continuity <- function(init.Ns0,I_thetas,Drs,I_rs,Gs=1,I_R0,dt_seq){
+test_continuity <- function(init.Ns0,I_thetas,Drs,I_rs,Gs_abs,I_R0,dt_seq){
 	for(i in 1:length(dt_seq)){
-		Nseq <- cross_time(init.Ns0,I_thetas,Drs,I_rs,Gs=1,I_R0,round(50/dt_seq[i]),dt_seq[i],F)
+		Nseq <- cross_time(init.Ns0,I_thetas,Drs,I_rs,Gs=Gs_abs/dt_seq[i],I_R0,round(50/dt_seq[i]),dt_seq[i],F)
 		plot_dynamics(Nseq,dt,"dt",dt_seq[i],pch=i,new=(i==1))
 	}
 }
 
-cross_time <- function(init.Ns0,I_thetas,Drs,I_rs,Gs=1,I_R0,nstep,dt,graph){
+cross_time <- function(init.Ns0,I_thetas,Drs,I_rs,Gs,I_R0,nstep,dt,graph){
 	R0 <- I_R0*dt
 	thetas <- I_thetas*dt
 	rs <- exp(I_rs*dt)-1 ##transfer into discrete growth rates
