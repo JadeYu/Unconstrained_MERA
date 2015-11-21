@@ -28,21 +28,21 @@ Drs=0.2
 #parameter values when dt=1
 thetas=1
 rs = 1
-R0=500
+R0=270000
 #transform into instant values
 I_thetas=thetas
 I_rs=log(1+rs)
 I_R0=R0
 
 #time frame and step length
-nstep = 500
-dt = 0.1
+nstep = 100
+dt = 0.2
 
 Gs_abs = 1
 dt_seq = c(0.1,0.5,1)
 test_continuity(init.Ns,I_thetas,Drs,I_rs,Gs_abs,I_R0,dt_seq)
 
-cross_time(init.Ns0=init.Ns,I_thetas=I_thetas,Drs=Drs,I_rs=I_rs,Gs=Gs_abs/dt,I_R0=I_R0,nstep=nstep,dt=dt,graph=T)
+cross_time(init.Ns0=init.Ns,I_thetas=I_thetas,Drs=Drs,I_rs=I_rs,Gs=Gs_abs,I_R0=I_R0,nstep=nstep/dt,dt=dt,graph=T)
 
 
 multi_integrated(init.Ns=5,thetas=1,Drs=0,rs=0.4,Gs=1,R0=500,nstep=500,T)
