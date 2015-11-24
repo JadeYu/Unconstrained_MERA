@@ -2,11 +2,21 @@ init.Ns <- c(5,50,100)
 rs <- c(0.08,0.05,0.02)
 thetas <- c(1,1,1)
 Drs <- c(0.1,0.1,0.1)
-Gs <- c(1,50,10)
+Gs_abs <- c(40,30,30)
 R0 <- 10000
 nstep <- 1000
 
-multi_integrated(init.Ns,thetas,Drs,rs,Gs,R0,nstep)
+multi_integrated(init.Ns,thetas,Drs,rs,Gs,R0,nstep,T)
+
+#transform into instant values
+I_thetas=thetas
+I_rs=log(1+rs)
+I_R0=R0
+dt = 0.5
+
+cross_time(init.Ns0=init.Ns,I_thetas=I_thetas,Drs=Drs,I_rs=I_rs,Gs=Gs_abs/dt,I_R0=I_R0,nstep=nstep,dt=dt,graph=T)
+
+
 plot.new()
 legend("bottomleft",paste("species",1:3),col=2:4,pch=1)
 
@@ -17,7 +27,12 @@ Drs=0
 
 #parameter values when dt=1
 thetas=1
+<<<<<<< HEAD
 rs_logi = 15
+=======
+rs = 1
+R0=270000
+>>>>>>> 4998aa0699fd71d3d3c9a004d7cdec3a6d9b084a
 #transform into instant values
 I_thetas=thetas
 Gs_abs=1
@@ -26,6 +41,7 @@ SSN = 100
 
 
 #time frame and step length
+<<<<<<< HEAD
 nstep = 50000
 dt = 0.001
 rs = exp(I_rs*dt)-1
@@ -34,6 +50,16 @@ I_R0 = I_thetas*(rs+1)/rs*SSN
 cross_time(init.Ns0=init.Ns,I_thetas=I_thetas,Drs=Drs,I_rs=I_rs,Gs=Gs_abs/dt,I_R0=I_R0,nstep=nstep,dt=dt,graph=T)
 
 logi_plot(SSN,nstep,init.Ns,rs_logi,Gs_abs)
+=======
+nstep = 100
+dt = 0.2
+
+Gs_abs = 1
+dt_seq = c(0.1,0.5,1)
+test_continuity(init.Ns,I_thetas,Drs,I_rs,Gs_abs,I_R0,dt_seq)
+
+cross_time(init.Ns0=init.Ns,I_thetas=I_thetas,Drs=Drs,I_rs=I_rs,Gs=Gs_abs,I_R0=I_R0,nstep=nstep/dt,dt=dt,graph=T)
+>>>>>>> 4998aa0699fd71d3d3c9a004d7cdec3a6d9b084a
 
 
 multi_integrated(init.Ns=5,thetas=1,Drs=0,rs=0.4,Gs=1,R0=500,nstep=500,T)
