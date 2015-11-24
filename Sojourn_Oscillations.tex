@@ -42,7 +42,7 @@
 
 From results in the previous write-ups we can see that, under the current framework of MERA, for both the single species case and the multiple competitors case, population size does not oscillate even when the intrinsic growth rate $r$ is very high (as opposed to the predictions of the logistic growth equation and the Lotka Volterra equations). Through time, each species converges smoothly to its steady state and stays there once steady state is reached. 
 
-In this write-up I will first explore the temporal assumptions of MERA compared to other models to infer which part possibly eliminates oscillations. Next I will prove that the relaxing of this assumption does generate oscillations under the MERA framework. The conclusion is that the difference between generation time and allocation period is probably at the root of population oscillations.
+In this write-up I will first explore the temporal assumptions of MERA compared to other models to infer which part possibly eliminates oscillations. Next I will prove that the relaxing of this assumption does generate oscillations under the MERA framework. The conclusion is that the difference between generation time and allocation period is at the root of population oscillations in MERA predictions.
 
 \section{A projection: oscillation, discretion and time lag}
 
@@ -80,9 +80,55 @@ For all four graphs $ N_{1,t=0}=5, \theta_1=1, D_{r,1} = 0, R_0=500$. The value 
 For all four graphs $ N_{1,t=0}=5, \theta_1=1, r_1= 0.1, R_0=500$. The value of $D_{r,1}$ is shown under the x-axis.
 \end{figure}
 
+Comparing Fig. 1 and Fig. 2 we can see that, although it does change oscillation patterns, increasing species generation time (with everything else unchanged) does not seem to change the mean value of steady state abundance. 
+
 From Fig. 2 and Fig. 3 we can see that, when the species generation time is not the same as the resource allocation period, all else equal, the bigger the $r$ or the bigger the $D_r$, the more oscillations in population dynamics. Actually when you look across the graphs in each figure, you'll see that the effect of increasing $r$ and $D_r$ is very similar to that of the intrinsic growth rate in the logistic growth function. 
 
-\subsection{Multiple competitors case: differential generation time among species}
+
+\section{Discussion}
+
+\subsection{Tradeoff for $r$ and $D_r$: high mean vs high oscillation}
+In the previous write-up (Nov 12) I have proved that the steady state abundance of a single species community is determined by the following equation
+  \begin{equation}
+\hat{N_1} =[ \frac{1}{r_1 (\frac{R_0}{\theta_1}- \hat{N_1})}]^{\frac{1}{D_{r,1}-1}}
+  \end{equation}
+Eq. 1 is simply Eq. 13 in write-up Nov 12 for the single species case. It shows that the steady state abundance of the single species case is solely determined by three parameter values: $r_1$, $D_{r,1}$ and the ratio $\frac{R_0}{\theta_1}$. From the results in this write-up (increasing generation time does not affect the steady state abundance), we have shown that Eq. 1 holds even when generation time is not the same as allocation period. This means that higher $r$ will always lead to higher mean steady state abundance, regardless of the magnitude of generation time. However, when generation time is much higher than allocation period,  higher $r$ leads to more drastic oscillations, reducing the stability of the population. Similarly for $D_r$, although high $D_r$ leads to high mean steady state abundance, it also generates more oscillations, increasing the risk of extinction over time.
+
+These results provide a parsimonious explanation to why not all species take an $r$ strategy or high $D_r$ without extra assumptions on fitness or density dependence of death and competition (although reasonable connections with these mechanisms might be potentially established).
+
+\subsection{Allocation period as one extra parameter in growth functions}
+
+From Eq.1, if we further assume that for this single species $D_{r,1}=0$ (see discussion in Nov 12 write-up), the above can be simplified into 
+   \begin{equation}
+\hat{N} = \frac{r}{r+1}\frac{ R_0}{\theta} 
+  \end{equation}
+
+Notice that the $r$ here is not the growth rate over a generation time, but the maximal growth rate of the species over a resource allocation period. The relationship between this $r$ and the rate over a generation time $r_{logi}$ as appears in the discrete logistic function is
+
+\begin{equation}
+ \frac{ \mbox{log} (1+r) }{A} = I_r = \frac{ \mbox{log} (1+r_{logi}) }{G}
+\end{equation}
+
+Where $A$ is the length of the allocation period. Eq. 3 is obtained by assuming that the two discrete growth rates correspond to the same instantaneous intrinsic growth rate $I_r$. 
+
+In the discrete logistic growth function, the shape of population dynamics given the initial abundance is determined once the values of steady state abundance $\hat{N}$, the discrete intrinsic growth rate $r_{logi}$ and the generation time $G$ are determined. Here from Eqs. 2 and 3 we can see that, even if $r_{logi}$, $\hat{N}$ and $G$ are determined, the values of $r$, $A$ and $R_0/\theta$ are not pinned down unless at least one of them is known. This means that for any given logistic growth function parameter setting, there can be multiple corresponding MERA parameter settings. This extra degree of freedom is due to the newly introduced flexibility in the relationship between the two time periods: the resource allocation period $A$ and the species generation time $G$. Fig. 5 shows when $r_{logi}$, $\hat{N}$ and $G$ are controlled, how different allocation period $A$ leads to different population dynamic patterns:
+
+
+
+
+\subsection{How to test}
+Challenge is that time parameters include not just generation time, but also allocation period. Might be guessed. Might use the smallest generation time in the community. Might be fitted. 
+
+Allocation period does affect outcome. (control for instantaneous growth rates, resource input and requirements, potentially with differential generation time, see if smaller allocation period reduces community's ability to acquire resources). A community character. 
+
+$R_0$ and $\theta$ only ratio matters.
+
+Simulate with two models one with larger resource allocation period, the other with smaller allocation period (all else equal ratio dependent, bigger $G$ smaller $R_0$, $\theta$ and $r$) see if allocation period is trivial.
+
+More important for predator-prey interactions
+
+
+\section{Appendix: Multiple competitors case: differential generation time among species}
 \begin{figure}
  \includegraphics[width=\textwidth]{oscillation_r_effect.pdf}
  \caption{Multiple species competing for one fundamental resource with differential generation time ($G_1=1, G_2=50, G_3=10$)}
@@ -97,22 +143,7 @@ For all four graphs $ N_{1,t=0}=5, N_{2,t=0}=50,N_{3,t=0}=100, \theta_1=\theta_2
 
 From Fig. 4 and Fig. 5 we can see that, when there are species with generation time bigger than 1, populations for all species (including those with generation time equal to 1) oscillate. Fig. 4 shows that similar to the single species case, bigger $r$ for all species leads to more oscillations. However, Fig. 5 shows that bigger $D_r$ for all species leads to reduced oscillations, which is contrary to the single species case. This suggests that there is probably a tradeoff between intra- and interspecific competition in generating oscillations. In future analysis I will look into more parameter settings.
 
-\section{Discussion}
 
-\subsection{Implications}
-
-Not only intrinsic growth rate, but also generation time matters. Tradeoff: when generation time is $>1$ allocation period, bigger $D_r$ gives higher steady state but also higher oscillations. Motivation for each single species not to have too high $D_r$.
-
-\subsection{How to test}
-Challenge is that time parameters include not just generation time, but also allocation period. Might be guessed. Might use the smallest generation time in the community. Might be fitted. 
-
-Allocation period does affect outcome. (control for instantaneous growth rates, resource input and requirements, potentially with differential generation time, see if smaller allocation period reduces community's ability to acquire resources). A community character. 
-
-$R_0$ and $\theta$ only ratio matters.
-
-Simulate with two models one with larger resource allocation period, the other with smaller allocation period (all else equal ratio dependent, bigger $G$ smaller $R_0$, $\theta$ and $r$) see if allocation period is trivial.
-
-More important for predator-prey interactions
 
 
 

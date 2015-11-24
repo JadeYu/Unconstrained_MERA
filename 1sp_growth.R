@@ -85,6 +85,19 @@ plot_dynamic <- function(SSN,r,R0,Dr,theta,nstep,ng=1,comp=T){
 	}
 }
 
+logi_plot <- function(SSN,nstep,N0,r){
+	t <- 1
+	N <- N0
+	N_seq <- N0
+	while (t < nstep){
+		N <- N*(1+r*(1-N/SSN))
+		N_seq <- c(N_seq,N)
+		t <- t+1
+	}
+	time <- 1:nstep
+	points(time,N_seq)
+}
+
 growth_function <- function(r,R0,Dr_seq,theta,nstep){
 	par(mfrow=c(1,2))
 	for(i in 1:length(Dr_seq)){

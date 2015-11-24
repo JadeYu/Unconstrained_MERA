@@ -13,29 +13,33 @@ legend("bottomleft",paste("species",1:3),col=2:4,pch=1)
 ##single species
 #test continuity
 init.Ns=5
-Drs=0.2
+Drs=0
 
 #parameter values when dt=1
 thetas=1
-rs = 1
-R0=500
+rs_logi = 15
 #transform into instant values
 I_thetas=thetas
-I_rs=log(1+rs)
-I_R0=R0
+Gs_abs=1
+I_rs=log(1+rs_logi)/Gs_abs
+SSN = 100
+
 
 #time frame and step length
-nstep = 50
-dt = 2
+nstep = 50000
+dt = 0.001
+rs = exp(I_rs*dt)-1
+I_R0 = I_thetas*(rs+1)/rs*SSN
 
-dt_seq = c(0.1,0.5,1)
-test_continuity(init.Ns,I_thetas,Drs,I_rs,Gs=1,I_R0,dt_seq)
+cross_time(init.Ns0=init.Ns,I_thetas=I_thetas,Drs=Drs,I_rs=I_rs,Gs=Gs_abs/dt,I_R0=I_R0,nstep=nstep,dt=dt,graph=T)
 
-cross_time(init.Ns0=init.Ns,I_thetas=I_thetas,Drs=Drs,I_rs=I_rs,Gs=1,I_R0=I_R0,nstep=nstep,dt=dt,graph=T)
+logi_plot(SSN,nstep,init.Ns,rs_logi,Gs_abs)
 
 
 multi_integrated(init.Ns=5,thetas=1,Drs=0,rs=0.4,Gs=1,R0=500,nstep=500,T)
 logi_growth(5,r=1,SSN=90.48,nstep=20)
+
+plot.new()
 legend("bottomright",c("MERA","logistic"),pch=1,col=2:1)
 
 init.Ns <- c(5,50,100)

@@ -33,7 +33,7 @@ multi_integrated <- function(init.Ns0,thetas,Drs,rs,Gs,R0,nstep,dt,graph=T){
 		}
 	}
 	if(graph){
-		plot_dynamics(Nseq,dt,"r",mean(rs),1)
+		plot_dynamics(Nseq,dt,"r_logi",round(exp(log(mean(rs)+1)*Gs)-1,6),1)
 	}
 	Nseq
 }
@@ -42,7 +42,7 @@ plot_dynamics <- function(Nseq,dt,xlab,values,pch,new=T){
 	time <- 1:dim(Nseq)[1]*dt
 	for(sp in 1:dim(Nseq)[2]){
 		if(sp==1&new){
-			plot(Nseq[,sp]~time,col=sp+1,ylim=range(Nseq),ylab="abundance",xlab=paste("time (",xlab,"=",values,")",sep=""),pch=pch)
+			plot(Nseq[,sp]~time,col=sp+1,ylim=range(Nseq)+c(0,20),ylab="abundance",xlab=paste("time (",xlab,"=",values,",A=",dt,")",sep=""),pch=pch)
 		}else{
 			points(time,Nseq[,sp],col=sp+1,pch=pch)
 		}
@@ -95,4 +95,21 @@ multi_predator_1prey <- function(inits,thetas,Drs,rs,Gs,R0,nstep){
 	}
 	#legend("bottomright",c("prey",paste("predator",1:(dim(Nseq)[2]-1))),col=1:length(thetas),pch=1,lty=1)
 	Nseq
+}
+
+
+
+logi_plot <- function(SSN,nstep,N0,r,dt){
+	t <- 1
+	N <- N0
+	N_seq <- N0
+	while (t < nstep){
+		N <- N*(1+r*(1-N/SSN))
+		N_seq <- c(N_seq,N)
+		t <- t+1
+	}
+	time <- 1:nstep*dt
+	#print(N_seq)
+	points(time,N_seq)
+	lines(time,N_seq)
 }
