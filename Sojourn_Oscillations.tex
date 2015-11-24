@@ -114,18 +114,50 @@ Where $A$ is the length of the allocation period. Eq. 3 is obtained by assuming 
 In the discrete logistic growth function, the shape of population dynamics given the initial abundance is determined once the values of steady state abundance $\hat{N}$, the discrete intrinsic growth rate $r_{logi}$ and the generation time $G$ are determined. Here from Eqs. 2 and 3 we can see that, even if $r_{logi}$, $\hat{N}$ and $G$ are determined, the values of $r$, $A$ and $R_0/\theta$ are not pinned down unless at least one of them is known. This means that for any given logistic growth function parameter setting, there can be multiple corresponding MERA parameter settings. This extra degree of freedom is due to the newly introduced flexibility in the relationship between the two time periods: the resource allocation period $A$ and the species generation time $G$. Fig. 5 shows when $r_{logi}$, $\hat{N}$ and $G$ are controlled, how different allocation period $A$ leads to different population dynamic patterns:
 
 
+When $A$ gets smaller, there are more oscillations, especially when $r_{logi}$ is high. 
+
+$A$ is an independent parameter. When close to 0 it might generate dynamics very close to the logistic growth function. Especially when $r_{logi}$ gets higher, $A$ plays a more and more important role in determining the oscillation pattern.
+
+Derive the approximation of growth function when $A$ approaches 0. In the following I will use $dt$ in place of $A$. $I_r$, $I_R$ and $I_\theta$ are instant values.
+
+\begin{equation}
+(N + dN)^2 = (I_r dt N  - dN) [\frac{I_R}{I_\theta} - (N+dN)]
+\end{equation}
+
+To control for steady state abundance, set $dN=0$ for Eq. 4 we can solve the steady state abundance: 
+\begin{equation}
+\hat{N} = \frac{I_R}{I_\theta} \frac{I_r dt+1}{I_r dt} 
+\end{equation}
+
+Substitute this into Eq. 4 we have
+\begin{equation}
+(N + dN)^2 = (rN dt - dN) [\hat{N} \frac{I_r dt+1}{I_r dt} - (N+dN)]
+\end{equation}
+
+Expand the expression and get rid of the small terms (those with dN and/or dt) we can get
+
+\begin{equation}
+\frac{dN}{dt}_{dt = \lim{A \to 0}} = \frac{I_rN (\hat{N}-N)}{\hat{N}}
+\end{equation}
+
+Exactly the same as the continuous logistic growth function. Now we see that continuous limit matches, have the reason to believe that discrete logistic growth function assumes continuous resource allocation with larger generation times.
+
+Find dt that will prove this point. (For a reasonable $r$ value, smaller $dt$ generates dynamics that more and more resemble the logistic growth function).
+
+Reveal that continuous resource allocation is not necessarily the case for all systems. The longer the resource allocation period, all else equal, increases steady state abundance (and coexistence?) and stability.
+
+$D_r$ might still play into the continuous solution. Try to solve one with general $D_r$.
+
+Or $D_r=1$. $I_R/I_\theta r = \hat{N} + 1/r$
+
 
 
 \subsection{How to test}
-Challenge is that time parameters include not just generation time, but also allocation period. Might be guessed. Might use the smallest generation time in the community. Might be fitted. 
+If there are species with high $r$, high $G$ but apparently more stability, this suggests discrete resource allocation. 
 
-Allocation period does affect outcome. (control for instantaneous growth rates, resource input and requirements, potentially with differential generation time, see if smaller allocation period reduces community's ability to acquire resources). A community character. 
+Predict that annual or bump systems have more stability.
 
-$R_0$ and $\theta$ only ratio matters.
-
-Simulate with two models one with larger resource allocation period, the other with smaller allocation period (all else equal ratio dependent, bigger $G$ smaller $R_0$, $\theta$ and $r$) see if allocation period is trivial.
-
-More important for predator-prey interactions
+Important for predator-prey interactions with differential generation time.
 
 
 \section{Appendix: Multiple competitors case: differential generation time among species}
