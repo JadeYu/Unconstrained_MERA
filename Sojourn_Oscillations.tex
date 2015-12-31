@@ -40,31 +40,37 @@
 \large
 \setlength{\parindent}{15pt}
 
-From results in the previous write-ups we can see that, under the current framework of MERA, for both the single species case and the multiple competitors case, population size does not oscillate even when the intrinsic growth rate $r$ is very high (as opposed to the predictions of the logistic growth equation and the Lotka Volterra equations). Through time, each species converges smoothly to its steady state and stays there once steady state is reached. 
+From results in the previous write-ups we can see that, under the current framework of MERA, for both the single species case and the multiple competitors case, population size does not oscillate even when the (discrete) intrinsic growth rate $r$ is very high (as opposed to the predictions of the logistic growth equation). Through time, each species converges gradually to its steady state and stays there permanently once it is reached. 
 
-In this write-up I will first explore the temporal assumptions of MERA compared to other models to infer which part possibly eliminates oscillations. Next I will prove that the relaxing of this assumption does generate oscillations under the MERA framework. The conclusion is that the difference between generation time and allocation period is at the root of population oscillations in MERA predictions.
+In this write-up I will first examine the temporal assumptions of MERA compared to the discrete and continuous logistic growth equations to infer which part of our assumptions might eliminate oscillations. Next I will prove that the relaxing of these assumptions does generate oscillations under the MERA framework. The conclusion is that the difference between generation time (see definition below) and allocation period is at the root of population oscillations in MERA predictions.
 
-\section{A projection: oscillation, discretion and time lag}
+\section{A projection: oscillation and time lag}
 
-We all know that the discrete logistic growth equation leads to oscillations around the steady state when intrinsic growth rate is high, while its continuous counterpart does not. One way to look at this is that, in the discrete logistic growth model, there is a time lag (the length of $\Delta t$) for the population to react to the density dependence effects imposed by its abundance. During this lag period, population size and density dependence information is not updated and the population grows at the same speed as at the beginning of the period, creating a chance for over shooting. In the continuous model, however, there is no time lag and density dependence information is instantly updated, therefore the population can adjust its growth rate instantly in response to its size at every moment, leaving no chance for over shooting. 
+We all know that the discrete logistic growth equation leads to oscillations around the steady state when the intrinsic growth rate is high, while its continuous counterpart does not. Although there could be a number of explanations to this, my point of view is that, in the discrete logistic growth model, there is a time lag (the length of the time interval $\Delta t$) for the population growth rate to react to the density dependence effects imposed by its own abundance. A more elaborate way to say it is that during this time interval, population size and the form of density dependence is not updated and the population grows at the same rate based on information at the beginning of the interval, creating a chance for over shooting. In the continuous model, however, there is no time lag and therefore population growth rate is instantly updated, leaving no chance for over shooting. 
 
-Now let's look at MERA. In MERA, the form of density dependence is realized through the resource allocation process. So far we have assumed that the generation time is the same as the resource allocation period, therefore the population size updates every time (and only when) resource is allocated. This means that every time the form of density dependence changes, the population instantly reacts to it, or there is no time lag for the population to react to the density dependence effects imposed by its abundance. Therefore, although MERA is seemingly a discrete model (since resource allocation happens in discrete time steps), by the criteria described above, it actually more closely models continuous growth since there is no time lag for population growth rate to react to its abundance, which is probably the reason why we do not see oscillations in MERA predictions. 
+Now let's look at MERA. In MERA, the density dependence of population growth is realized through the resource allocation process. So far we have assumed that the population size is updated every time (and only when) resource is allocated. This means that there is no time lag for the population to react to the density dependence effects imposed by its abundance. Therefore, although MERA is seemingly a discrete model (since resource allocation happens in discrete time steps), from the argument above we can see that it is actually more like a model for continuous growth, which is probably the reason why we do not see oscillations in MERA predictions. 
 
-So far it has been my projections and some of the arguments might be invalid or need re-wording. However, it is easy to test the resulting inference: if we introduce time lag into MERA, i.e. population size does not change every time resource is allocated and resource needs to be accumulated for several allocation periods (corresponding to one generation time) before population size can be updated, a different dynamic pattern (possibly with oscillations) is expected. Since generation time is species specific in nature, this is a particularly important assumption to explore for both the single species case and multiple species cases where generation time not only differs from allocation period, but also potentially varies among species.
+So far it is merely an educated guess. But it is easy to test: if we introduce time lag into MERA so that population size does not change every time resource is allocated, in other words resource needs to be accumulated for multiple allocation periods before population size can be updated, different population dynamics (possibly with oscillations) is expected. 
+
+In population growth models, the length of $\Delta t$ is usually interpreted as generation time, which by the most generally accepted definition in demography and population biology is the average time between two consecutive generations in the lineages of a population. Here I am going to use this term to represent the length of waiting time (during which resource can be allocated multiple times and accumulated) between two consecutive changes in population size. You can see the connections between these two definitions but still there are distinctions. I will discuss about this later.
 
 \section{Introducing species specific generation time into MERA}
 
-To relax the previous assumption of species generation time is the same with resource allocation period, here an extra parameter $G_i$ is introduced to represent the generation time for species $i$, or the number of allocation periods resource has to be accumulated before the population size of species $i$ changes. It is assumed to be a positive integer greater than or equal to 1 ($G_i \geq 1$), which is of course an approximation of reality but should be accurate enough especially when resource allocation period is much smaller than the generation time. Although complications in real world could generate violations of these assumptions, I think it is OK to bear with them to take a first look at the effect of $G_i$.
+To relax the previous MERA assumption of population generation time being the same with resource allocation period, here an extra parameter $d t_{G,i}$ is introduced to represent the population generation time for species $i$. When $d t_A$ is used to annotate the length of resource allocation period, the ratio $d t_{G,i}/d t_A$ is the number of times resource from allocation has to be accumulated before the change in population size takes place. Practically, we will use the largest previous integer of this ratio, assuming that the resource can only be allocated at the end of an allocation period.
 
-\subsection{Single species case: increased oscillations with $D_r$ and $r$}
-
-The previous single species model is equivalent to $G_1=1$, or growth is only accumulated for one allocation period before added on to the population. This leads no oscillations under all conditions (Fig.1).
+The previous single species model is equivalent to $d t_{G,i}=d t_A$, or growth is only accumulated for one allocation period before added on to the population. This leads no oscillations under all conditions (Fig.1).
 
 \begin{figure}
  \includegraphics[width=\textwidth]{1sp_no_sojourn.pdf}
- \caption{Single species growth with no time lag ($G_1=1$)}
-For all four graphs $ N_{1,t=0}=5, \theta_1=1, D_{r,1} = 0, R_0=500$. The value of $r$ is shown under the x-axis.
+ \caption{Single species growth with no time lag ($d t_{G,i}=d t_A$)}
+For all four graphs $ N_{1,t=0}=5, \theta_1=1, D_{r,1} = 0, R_0=500$. The value of $r_{discrete}$ is shown under the x-axis.
 \end{figure}
+
+Further refine the time intervals (keeping steady state and intrinsic growth rate constant). See if dynamics change. (The shape might not change at all!!)
+
+As will be proved later, when $d t_{G,i}=d t_A \to 0$, the resulting growth function is exactly the same as the continuous-time logistic growth function
+
+\subsection{Single species case: increased oscillations with $D_r$ and discrete intrinsic growth rate $r_{discrete}$}
 
 Now let's look at the case where $G_1=10$, so that generation time is ten times as long as one allocation period, or growth (positive or negative) has to be accumulated for 10 allocation periods before added on to the population (Fig. 2 \& 3).
 
@@ -158,6 +164,8 @@ If there are species with high $r$, high $G$ but apparently more stability, this
 Predict that annual or bump systems have more stability.
 
 Important for predator-prey interactions with differential generation time.
+
+Since generation time is species specific, this is a particularly important assumption to explore for both the single species case and multiple species cases where generation time not only differs from allocation period, but also potentially varies among species.
 
 
 \section{Appendix: Multiple competitors case: differential generation time among species}
